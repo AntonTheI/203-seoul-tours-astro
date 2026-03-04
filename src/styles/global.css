@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --secondary: #64748b;
+  --text: #1e293b;
+  --bg: #ffffff;
+}
+
+@layer base {
+  p {
+    line-height: 1.625;
+  }
+}
+
+/* Your custom theme configuration goes here using @theme */
+@theme {
+  /* Primary tones */
+  --color-dark-chromatic-teal: #203440;
+  --color-medium-chromatic-teal: #335266;
+  --color-light-chromatic-teal: #46718c;
+
+  --color-dark-atmospheric-teal: #86a1b3;
+  --color-medium-atmospheric-teal: #a3c4d9;
+  --color-light-atmospheric-teal: #bfe7ff;
+
+  /* Natural tones */
+  --color-natural-dark-210: #17181a;
+  --color-natural-light: #fff6f2;
+
+  /* Accent tones */
+  --color-accent-orange-23: #ff8940;
+  --color-accent-crimson-344: #b31b43;
+
+  --color-grey-90: #737373e6;
+  --color-accent-orange-90: #ff8940e6;
+  --color-light-atmospheric-teal-70: #bfe7ffb3;
+  --color-accent-orange-light: #fff4ed;
+  --color-light-atmospheric-teal-75: #bfe7ffb3;
+  --color-light-atmospheric-teal-bg: #edf8ff;
+
+  /* Footer */
+  --color-dark-teal: #192933;
+
+  /* Headers font size */
+  --text-hero: clamp(48px, 6vw, 72px);
+  --text-section: clamp(30px, 4vw, 48px);
+  --text-subsection: clamp(24px, 3vw, 32px);
+}
+
+/* Utility classes */
+.accent-label {
+  @apply text-xs text-accent-orange-23 font-semibold lg:text-sm;
+}
+
+.headline {
+  @apply text-2xl font-bold lg:text-4xl;
+}
+/* The e6 at the end is 90% in hex (230 out of 255).
+
+Common opacity values in hex:
+
+100% = ff
+90% = e6
+80% = cc
+70% = b3
+50% = 80
+25% = 40
+10% = 1a
+Or use rgba:
+
+
+--color-grey-90: rgba(115, 115, 115, 0.9); */
+
+body {
+  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto slab", serif; */
+  /* background-color: #fef6f3; */
+}

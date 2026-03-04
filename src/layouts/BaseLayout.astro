@@ -1,0 +1,31 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/layout/Navbar.tsx";
+import Footer from "../components/layout/Footer.tsx";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Seoul Walking Tours" } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg" />
+  </head>
+  <body>
+    <Navbar currentPath={currentPath} client:load />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
