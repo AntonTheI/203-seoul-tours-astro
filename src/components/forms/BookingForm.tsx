@@ -3,14 +3,13 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 const formSchema = z.object({
-  title: z
-    .string()
-    .min(5, "Bug title must be at least 5 characters.")
-    .max(32, "Bug title must be at most 32 characters."),
-  description: z
-    .string()
-    .min(20, "Description must be at least 20 characters.")
-    .max(100, "Description must be at most 100 characters."),
+  name: z.string().optional(),
+  email: z.string().email("Invalid email"),
+  groupSize: z.string().min(1, "Please select group size").optional(),
+  date: z.date().optional(),
+  flexibleDate: z.boolean().default(false),
+  extension: z.string().optional(),
+  comment: z.string().optional(),
 });
 
 export function BugReportForm() {
