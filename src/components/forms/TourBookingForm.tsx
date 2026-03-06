@@ -177,6 +177,9 @@ export function TourBookingForm() {
                     }
                   }}
                   autoFocus
+                  captionLayout="dropdown"
+                  startMonth={new Date()}
+                  endMonth={new Date(new Date().getFullYear() + 10, 11)}
                 />
               </PopoverContent>
             </Popover>
