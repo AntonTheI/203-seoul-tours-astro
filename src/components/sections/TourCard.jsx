@@ -55,7 +55,7 @@ const TourCard = () => {
               {tours.map((tour) => (
                 <div
                   key={tour.id}
-                  className="flex shrink-0 w-90 flex-col rounded-[1.25rem] bg-white overflow-hidden border-[0.5px] border-gray-400 my-4"
+                  className="flex shrink-0 w-90 flex-col rounded-4xl bg-white overflow-hidden border-[0.5px] border-gray-400 my-4"
                 >
                   <div className="relative">
                     <img

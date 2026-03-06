@@ -1,5 +1,5 @@
-import React from "react";
 import { useForm } from "react-hook-form";
+import { TourBookingForm } from "../forms/TourBookingForm";
 
 const Tours = () => {
   return (
@@ -214,7 +214,9 @@ const Tours = () => {
           </div>
         </div>
 
-        <div className="flex-1 bg-white rounded-3xl"> hello</div>
+        <div className="flex-1 bg-white rounded-3xl">
+          <TourBookingForm />
+        </div>
       </div>
 
       <div className="bg-medium-chromatic-teal p-40 ">
