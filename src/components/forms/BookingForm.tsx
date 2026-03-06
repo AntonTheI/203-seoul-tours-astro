@@ -7,17 +7,22 @@ const formSchema = z.object({
   email: z.string().email("Invalid email"),
   groupSize: z.string().min(1, "Please select group size").optional(),
   date: z.date().optional(),
-  flexibleDate: z.boolean().default(false),
+  flexibleDate: z.boolean(),
   extension: z.string().optional(),
   comment: z.string().optional(),
 });
 
-export function BugReportForm() {
+export function TourBookingForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
-      description: "",
+      name: "",
+      email: "",
+      groupSize: "",
+      date: undefined,
+      flexibleDate: false,
+      extension: "",
+      comment: "",
     },
   });
 
