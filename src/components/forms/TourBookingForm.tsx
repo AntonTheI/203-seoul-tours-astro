@@ -37,13 +37,20 @@ const formSchema = z.object({
     })
     .optional(),
   flexibleDate: z.boolean(),
-  extension: z.string().optional(),
+  extensions: z.array(z.string()).optional(),
   comment: z.string().optional(),
 });
+
+export const TOUR_EXTENSIONS = [
+  { value: "wall", label: "City wall tour" },
+  { value: "sewing", label: "Sewing District tour " },
+  // etc
+];
 
 export function TourBookingForm() {
   const [open, setOpen] = useState(false);
   const [clickCount, setClickCount] = useState(0);
+  const [selectValue, setSelectValue] = useState("");
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -53,7 +60,7 @@ export function TourBookingForm() {
       groupSize: "",
       date: undefined,
       flexibleDate: false,
-      extension: "",
+      extensions: [],
       comment: "",
     },
   });
@@ -209,6 +216,65 @@ export function TourBookingForm() {
                 I'm flexible with my dates
               </FieldLabel>
             </div>
+            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+          </Field>
+        )}
+      />
+
+      {/* Extend your tour */}
+      <Controller
+        name="extensions"
+        control={form.control}
+        render={({ field, fieldState }) => (
+          <Field data-invalid={fieldState.invalid}>
+            <FieldLabel>Extend your tour</FieldLabel>
+            <Select
+              value={selectValue}
+              onValueChange={(value) => {
+                setSelectValue("");
+                if (!field.value?.includes(value)) {
+                  field.onChange([...(field.value || []), value]);
+                }
+              }}
+            >
+              <SelectTrigger aria-invalid={fieldState.invalid}>
+                <SelectValue placeholder="Add an extension" />
+              </SelectTrigger>
+              <SelectContent>
+                {TOUR_EXTENSIONS.map((opt) => (
+                  <SelectItem key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            {/* Selected tags */}
+            {field.value && field.value.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-2">
+                {field.value.map((val) => {
+                  const label = TOUR_EXTENSIONS.find(
+                    (o) => o.value === val,
+                  )?.label;
+                  return (
+                    <span
+                      key={val}
+                      className="flex items-center gap-1 bg-muted px-2 py-1 rounded-md text-sm"
+                    >
+                      {label}
+                      <XIcon
+                        className="h-3 w-3 cursor-pointer text-accent-orange-23"
+                        onClick={() =>
+                          field.onChange(field.value?.filter((v) => v !== val))
+                        }
+                      />
+                    </span>
+                  );
+                })}
+              </div>
+            )}
+
+            <FieldDescription>Add more tours to your day.</FieldDescription>
             {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
           </Field>
         )}
