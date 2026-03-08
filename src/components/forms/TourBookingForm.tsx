@@ -23,6 +23,7 @@ import { CalendarIcon, XIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
 import { format } from "date-fns";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Textarea } from "../ui/textarea";
 
 import { useState } from "react";
 
@@ -51,6 +52,9 @@ export function TourBookingForm() {
   const [open, setOpen] = useState(false);
   const [clickCount, setClickCount] = useState(0);
   const [selectValue, setSelectValue] = useState("");
+
+  const [isSelectingRange, setIsSelectingRange] = useState(false);
+  const [hoveredDate, setHoveredDate] = useState<Date | undefined>();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -173,23 +177,21 @@ export function TourBookingForm() {
                   )}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent>
+              <PopoverContent align="start" avoidCollisions={false}>
                 <Calendar
                   mode="range"
+                  resetOnSelect
                   selected={field.value}
                   onSelect={(value) => {
                     if (value) field.onChange(value);
-                    const newCount = clickCount + 1;
-                    setClickCount(newCount);
-                    if (newCount >= 2) {
+                    if (value?.from && value?.to) {
                       setOpen(false);
-                      setClickCount(0);
                     }
                   }}
-                  autoFocus
                   captionLayout="dropdown"
                   startMonth={new Date()}
                   endMonth={new Date(new Date().getFullYear() + 10, 11)}
+                  autoFocus
                 />
               </PopoverContent>
             </Popover>
@@ -279,6 +281,29 @@ export function TourBookingForm() {
           </Field>
         )}
       />
+
+      {/* Comments */}
+      <h4 className="accent-label">COMMENTS</h4>
+      <Controller
+        name="comment"
+        control={form.control}
+        render={({ field, fieldState }) => (
+          <Field data-invalid={fieldState.invalid}>
+            <FieldLabel htmlFor="comment">Additional information</FieldLabel>
+            <Textarea
+              {...field}
+              id="comment"
+              rows={4}
+              placeholder="Questions, thoughts, ideas, other important information, walking restraints. Please add it here."
+              aria-invalid={fieldState.invalid}
+            />
+            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+          </Field>
+        )}
+      />
+
+      {/* Submit button */}
+      <Button type="submit">Send Booking Request</Button>
     </form>
   );
 }
