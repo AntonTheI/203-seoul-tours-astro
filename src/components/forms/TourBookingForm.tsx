@@ -22,6 +22,7 @@ import { Button } from "../ui/button";
 import { CalendarIcon, XIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
 import { format } from "date-fns";
+import { Checkbox } from "@/components/ui/checkbox";
 
 import { useState } from "react";
 
@@ -65,6 +66,7 @@ export function TourBookingForm() {
   return (
     <form id="tour-booking-form" onSubmit={form.handleSubmit(onSubmit)}>
       {/* Name input */}
+      <h4 className="accent-label">YOUR DETAILS</h4>
       <Controller
         name="name"
         control={form.control}
@@ -134,6 +136,7 @@ export function TourBookingForm() {
       />
 
       {/* Preferred date input */}
+      <h4 className="accent-label">DATE & EXPERIENCE</h4>
       <Controller
         name="date"
         control={form.control}
@@ -184,6 +187,28 @@ export function TourBookingForm() {
               </PopoverContent>
             </Popover>
 
+            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+          </Field>
+        )}
+      />
+
+      {/* Flexible with dates checkbox */}
+      <Controller
+        name="flexibleDate"
+        control={form.control}
+        render={({ field, fieldState }) => (
+          <Field data-invalid={fieldState.invalid}>
+            <div className="flex items-center gap-2">
+              <Checkbox
+                id="flexibleDate"
+                checked={field.value}
+                onCheckedChange={field.onChange}
+                aria-invalid={fieldState.invalid}
+              />
+              <FieldLabel htmlFor="flexibleDate">
+                I'm flexible with my dates
+              </FieldLabel>
+            </div>
             {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
           </Field>
         )}
