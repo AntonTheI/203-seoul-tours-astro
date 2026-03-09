@@ -49,7 +49,7 @@ export const TOUR_EXTENSIONS = [
   // etc
 ];
 
-export function TourBookingForm() {
+export function TourBookingForm({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
   const [clickCount, setClickCount] = useState(0);
   const [selectValue, setSelectValue] = useState("");
@@ -90,9 +90,10 @@ export function TourBookingForm() {
     <form
       id="tour-booking-form"
       onSubmit={form.handleSubmit(onSubmit)}
-      className="flex flex-col gap-10"
+      className={className}
     >
       {/* YOUR DETAILS */}
+      <h3 className="text-2xl font-semibold -mb-5">Book the tour</h3>
       <div className="flex flex-col gap-4">
         {/* Name input */}
         <h4 className="accent-label">YOUR DETAILS</h4>
@@ -374,6 +375,7 @@ export function TourBookingForm() {
                 {...field}
                 id="comment"
                 rows={4}
+                className="field-sizing-fixed"
                 placeholder="Questions, thoughts, ideas, other important information, walking restraints. Please add it here."
                 aria-invalid={fieldState.invalid}
               />

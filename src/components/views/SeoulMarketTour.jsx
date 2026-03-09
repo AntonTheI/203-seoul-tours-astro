@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { TourBookingForm } from "../forms/TourBookingForm";
+import PracticalInfo from "../tour/PracticalInfo";
 
 const Tours = () => {
   return (
@@ -18,6 +19,7 @@ const Tours = () => {
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row  md:px-22 lg:px-32 gap-5 my-12 ">
         {/* Desktop - Left Col */}
+        <PracticalInfo className="md:rounded-2xl lg:hidden bg-white p-5" />
         <div className="flex flex-col flex-2 gap-8 bg-white md:rounded-3xl px-5">
           <div className="pt-5">
             <img
@@ -216,8 +218,9 @@ const Tours = () => {
           </div>
         </div>
 
-        <div className="lg:self-start flex-1 bg-white md:rounded-3xl px-5 py-10 sticky top-17">
-          <TourBookingForm />
+        <div className="lg:self-start flex-1 sticky top-17">
+          <PracticalInfo className="md:rounded-2xl hidden lg:block bg-white mb-8 px-5 py-10" />
+          <TourBookingForm className="flex flex-col gap-10 md:rounded-2xl bg-white px-5 py-10" />
         </div>
       </div>
 
