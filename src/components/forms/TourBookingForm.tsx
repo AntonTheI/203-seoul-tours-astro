@@ -69,6 +69,8 @@ export function TourBookingForm() {
     },
   });
 
+  const isFlexibleDate = form.watch("flexibleDate");
+
   function onSubmit(data: z.infer<typeof formSchema>) {
     // Do something with the form values.
     console.log(data);
@@ -156,7 +158,7 @@ export function TourBookingForm() {
             <FieldLabel htmlFor="date">Preferred date</FieldLabel>
             <Popover open={open} onOpenChange={setOpen}>
               <PopoverTrigger asChild>
-                <Button variant="outline">
+                <Button variant="outline" disabled={isFlexibleDate}>
                   <CalendarIcon className="h-4 w-4" />
                   {field.value?.from
                     ? field.value.to &&
@@ -211,7 +213,10 @@ export function TourBookingForm() {
               <Checkbox
                 id="flexibleDate"
                 checked={field.value}
-                onCheckedChange={field.onChange}
+                onCheckedChange={(checked) => {
+                  field.onChange(checked);
+                  if (checked) form.setValue("date", undefined);
+                }}
                 aria-invalid={fieldState.invalid}
               />
               <FieldLabel htmlFor="flexibleDate">
