@@ -3,7 +3,7 @@ import { TourBookingForm } from "../forms/TourBookingForm";
 
 const Tours = () => {
   return (
-    <div className=" bg-natural-light">
+    <div className=" bg-natural-light ">
       {/* Hero img */}
       <div className="relative h-116 overflow-hidden">
         <img
@@ -16,9 +16,9 @@ const Tours = () => {
         </h1>
       </div>
 
-      <div className="max-w-7xl mx-auto mt-10 flex flex-col lg:flex-row  md:px-22 lg:px-32 gap-5">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row  md:px-22 lg:px-32 gap-5 my-12 ">
         {/* Desktop - Left Col */}
-        <div className="flex  flex-col flex-2 mb-100 gap-8 bg-white md:rounded-3xl px-5">
+        <div className="flex  flex-col flex-2 gap-8 bg-white md:rounded-3xl px-5">
           <div className="pt-5">
             <img
               src="/assets/images/marketLady.jpg"
@@ -221,27 +221,29 @@ const Tours = () => {
         </div>
       </div>
 
-      <div className="bg-medium-chromatic-teal p-40 ">
-        <div className="border-l-2 border-accent-orange-23  px-10">
-          <h2 className="text-section font-semibold text-accent-orange-23">
-            A personal note
-          </h2>
-          <div className="flex h-9 shrink-0">
-            {/* <div className="h-0.5 bg-gray-800/50 w-[15%]"></div> */}
-          </div>
+      <div className="bg-medium-chromatic-teal">
+        <div className="max-w-7xl mx-auto px-5 md:px-22 lg:px-32 py-12 md:py-22 lg:py-32">
+          <div className="border-l-2 border-accent-orange-23 px-10 lg:mx-10">
+            <h2 className="text-section font-semibold text-accent-orange-23">
+              A personal note
+            </h2>
+            <div className="flex h-9 shrink-0">
+              {/* <div className="h-0.5 bg-gray-800/50 w-[15%]"></div> */}
+            </div>
 
-          <p className="text-natural-light">
-            Visiting Gyeongdong Market always stirs up memories of my first
-            holiday in Korea. The first winter I spent in Korea, my
-            mother-in-law brought me to Gyeongdong Market to shop for the
-            upcoming Lunar New Year. The scale of it all felt overwhelming at
-            first — as Seoul can do to first time travellers — but over time it
-            has become one of the places I return to most. And then there are
-            the smells of Yangnyeong Medicine Market. The dried herbs and roots
-            carry a scent that always reminds me of Dutch 'drop', the licorice
-            candy I grew up with. Small associations like that make this place
-            feel both distant and familiar at once.
-          </p>
+            <p className="text-natural-light">
+              Visiting Gyeongdong Market always stirs up memories of my first
+              holiday in Korea. The first winter I spent in Korea, my
+              mother-in-law brought me to Gyeongdong Market to shop for the
+              upcoming Lunar New Year. The scale of it all felt overwhelming at
+              first — as Seoul can do to first time travellers — but over time
+              it has become one of the places I return to most. And then there
+              are the smells of Yangnyeong Medicine Market. The dried herbs and
+              roots carry a scent that always reminds me of Dutch 'drop', the
+              licorice candy I grew up with. Small associations like that make
+              this place feel both distant and familiar at once.
+            </p>
+          </div>
         </div>
       </div>
     </div>
