@@ -24,8 +24,9 @@ import { Calendar } from "../ui/calendar";
 import { format } from "date-fns";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "../ui/textarea";
+import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const formSchema = z.object({
   name: z.string().optional(),
@@ -56,6 +57,8 @@ export function TourBookingForm() {
   const [isSelectingRange, setIsSelectingRange] = useState(false);
   const [hoveredDate, setHoveredDate] = useState<Date | undefined>();
 
+  const [isMobile, setIsMobile] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -75,6 +78,16 @@ export function TourBookingForm() {
     // Do something with the form values.
     console.log(data);
   }
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+
+    return () => {
+      window.removeEventListener("resize", check);
+    };
+  }, []);
 
   return (
     <form id="tour-booking-form" onSubmit={form.handleSubmit(onSubmit)}>
@@ -156,47 +169,95 @@ export function TourBookingForm() {
         render={({ field, fieldState }) => (
           <Field data-invalid={fieldState.invalid}>
             <FieldLabel htmlFor="date">Preferred date</FieldLabel>
-            <Popover open={open} onOpenChange={setOpen}>
-              <PopoverTrigger asChild>
-                <Button variant="outline" disabled={isFlexibleDate}>
-                  <CalendarIcon className="h-4 w-4" />
-                  {field.value?.from
-                    ? field.value.to &&
-                      field.value.to.getTime() !== field.value.from.getTime()
-                      ? `${format(field.value.from, "PP")} - ${format(field.value.to, "PP")}`
-                      : format(field.value.from, "PP")
-                    : "Pick a date"}
-                  {field.value?.from && (
-                    <span
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        field.onChange(undefined);
-                        setClickCount(0);
-                      }}
-                    >
-                      <XIcon className="h-4 w-4" />
-                    </span>
-                  )}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent align="start" avoidCollisions={false}>
-                <Calendar
-                  mode="range"
-                  resetOnSelect
-                  selected={field.value}
-                  onSelect={(value) => {
-                    if (value) field.onChange(value);
-                    if (value?.from && value?.to) {
-                      setOpen(false);
-                    }
-                  }}
-                  captionLayout="dropdown"
-                  startMonth={new Date()}
-                  endMonth={new Date(new Date().getFullYear() + 10, 11)}
-                  autoFocus
-                />
-              </PopoverContent>
-            </Popover>
+            {isMobile ? (
+              <Drawer open={open} onOpenChange={setOpen}>
+                <DrawerTrigger asChild>
+                  <Button
+                    className="flex"
+                    variant="outline"
+                    disabled={isFlexibleDate}
+                  >
+                    <CalendarIcon className="h-4 w-4" />
+                    {field.value?.from
+                      ? field.value.to &&
+                        field.value.to.getTime() !== field.value.from.getTime()
+                        ? `${format(field.value.from, "PP")} - ${format(field.value.to, "PP")}`
+                        : format(field.value.from, "PP")
+                      : "Pick a date"}
+                    {field.value?.from && (
+                      <span
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          field.onChange(undefined);
+                          setClickCount(0);
+                        }}
+                      >
+                        <XIcon className="h-4 w-4" />
+                      </span>
+                    )}
+                  </Button>
+                </DrawerTrigger>
+                <DrawerContent>
+                  <Calendar
+                    mode="range"
+                    resetOnSelect
+                    selected={field.value}
+                    onSelect={(value) => {
+                      if (value) field.onChange(value);
+                      if (value?.from && value?.to) {
+                        setOpen(false);
+                      }
+                    }}
+                    captionLayout="dropdown"
+                    startMonth={new Date()}
+                    endMonth={new Date(new Date().getFullYear() + 10, 11)}
+                    autoFocus
+                  />
+                </DrawerContent>
+              </Drawer>
+            ) : (
+              <Popover open={open} onOpenChange={setOpen}>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" disabled={isFlexibleDate}>
+                    <CalendarIcon className="h-4 w-4" />
+                    {field.value?.from
+                      ? field.value.to &&
+                        field.value.to.getTime() !== field.value.from.getTime()
+                        ? `${format(field.value.from, "PP")} - ${format(field.value.to, "PP")}`
+                        : format(field.value.from, "PP")
+                      : "Pick a date"}
+                    {field.value?.from && (
+                      <span
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          field.onChange(undefined);
+                          setClickCount(0);
+                        }}
+                      >
+                        <XIcon className="h-4 w-4" />
+                      </span>
+                    )}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent align="center" avoidCollisions={false}>
+                  <Calendar
+                    mode="range"
+                    resetOnSelect
+                    selected={field.value}
+                    onSelect={(value) => {
+                      if (value) field.onChange(value);
+                      if (value?.from && value?.to) {
+                        setOpen(false);
+                      }
+                    }}
+                    captionLayout="dropdown"
+                    startMonth={new Date()}
+                    endMonth={new Date(new Date().getFullYear() + 10, 11)}
+                    autoFocus
+                  />
+                </PopoverContent>
+              </Popover>
+            )}
 
             {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
           </Field>
