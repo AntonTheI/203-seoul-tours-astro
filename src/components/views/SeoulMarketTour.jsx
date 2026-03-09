@@ -18,7 +18,7 @@ const Tours = () => {
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row  md:px-22 lg:px-32 gap-5 my-12 ">
         {/* Desktop - Left Col */}
-        <div className="flex  flex-col flex-2 gap-8 bg-white md:rounded-3xl px-5">
+        <div className="flex flex-col flex-2 gap-8 bg-white md:rounded-3xl px-5">
           <div className="pt-5">
             <img
               src="/assets/images/marketLady.jpg"
@@ -216,7 +216,7 @@ const Tours = () => {
           </div>
         </div>
 
-        <div className="flex-1 bg-white md:rounded-3xl px-5 py-10">
+        <div className="lg:self-start flex-1 bg-white md:rounded-3xl px-5 py-10 sticky top-17">
           <TourBookingForm />
         </div>
       </div>

@@ -15,7 +15,7 @@ const MobileMenu = ({ currentPath = "" }) => {
   }, [isOpen]);
 
   return (
-    <div className="md:hidden">
+    <div className="md:hidden text-natural-dark-210">
       <button
         aria-label="Open menu"
         aria-expanded={isOpen}

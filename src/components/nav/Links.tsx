@@ -18,7 +18,7 @@ const Links = ({ className = "", currentPath = "" }: Props) => {
         <li key={item.href}>
           <a
             href={item.href}
-            className={currentPath === item.href ? "text-blue-600" : ""}
+            // className={currentPath === item.href ? "text-accent-orange-23" : ""}
           >
             {item.label}
           </a>
