@@ -3,30 +3,32 @@ import { TourBookingForm } from "../forms/TourBookingForm";
 
 const Tours = () => {
   return (
-    <div>
+    <div className=" bg-natural-light">
+      {/* Hero img */}
       <div className="relative h-116 overflow-hidden">
         <img
           className=" object-cover w-full h-full object-[50%_70%]"
           src="/assets/images/marketWideShot.jpg"
           alt="Market female vendor"
         />
-        <h1 className="absolute inset-0 flex items-center justify-center text-7xl text-white">
+        <h1 className="absolute inset-0 flex items-center justify-center text-5xl lg:text-7xl text-white">
           Seoul Market Tour
         </h1>
       </div>
 
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row  p-5 md:px-22 lg:px-32 gap-5 bg-natural-light">
-        <div className="flex  flex-col flex-2 mb-100 gap-8 bg-white rounded-3xl px-10">
-          <div className="">
-            {/* <img
+      <div className="max-w-7xl mx-auto mt-10 flex flex-col lg:flex-row  md:px-22 lg:px-32 gap-5">
+        {/* Desktop - Left Col */}
+        <div className="flex  flex-col flex-2 mb-100 gap-8 bg-white md:rounded-3xl px-5">
+          <div className="pt-5">
+            <img
               src="/assets/images/marketLady.jpg"
               alt="market lady"
               className="object-cover w-full h-full max-w-165 max-h-110"
-            /> */}
+            />
           </div>
 
+          {/* Market tour description */}
           <div className="flex flex-col ">
-            {/* <h4 className="accent-label">SEOUL MARKET TOUR</h4> */}
             <h2 className="text-section font-semibold mb-4">
               A Journey to the Market
             </h2>
@@ -214,7 +216,7 @@ const Tours = () => {
           </div>
         </div>
 
-        <div className="flex-1 bg-white rounded-3xl">
+        <div className="flex-1 bg-white md:rounded-3xl px-5 py-10">
           <TourBookingForm />
         </div>
       </div>
