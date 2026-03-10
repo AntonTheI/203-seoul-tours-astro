@@ -103,12 +103,7 @@ export function TourBookingForm({ className }: { className?: string }) {
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
               <FieldLabel htmlFor="name">Name</FieldLabel>
-              <Input
-                {...field}
-                id="name"
-                placeholder="Jane Doe"
-                aria-invalid={fieldState.invalid}
-              />
+              <Input {...field} id="name" aria-invalid={fieldState.invalid} />
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
           )}
@@ -120,17 +115,11 @@ export function TourBookingForm({ className }: { className?: string }) {
           control={form.control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor="email">
-                Email
-                <span className="text-[10px] bg-[#F0F6F8]/75 border border-medium-atmospheric-teal rounded-xl px-2 py-0.5">
-                  Required
-                </span>
-              </FieldLabel>
+              <FieldLabel htmlFor="email">Email *</FieldLabel>
               <Input
                 {...field}
                 id="email"
                 type="email"
-                placeholder="Jane@example.com"
                 aria-invalid={fieldState.invalid}
               />
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
@@ -265,33 +254,6 @@ export function TourBookingForm({ className }: { className?: string }) {
                   </Popover>
                 )}
 
-                {fieldState.invalid && (
-                  <FieldError errors={[fieldState.error]} />
-                )}
-              </Field>
-            )}
-          />
-
-          {/* Flexible with dates checkbox */}
-          <Controller
-            name="flexibleDate"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <div className="flex items-center gap-2 mt-2">
-                  <Checkbox
-                    id="flexibleDate"
-                    checked={field.value}
-                    onCheckedChange={(checked) => {
-                      field.onChange(checked);
-                      if (checked) form.setValue("date", undefined);
-                    }}
-                    aria-invalid={fieldState.invalid}
-                  />
-                  <FieldLabel htmlFor="flexibleDate">
-                    I'm flexible with my dates
-                  </FieldLabel>
-                </div>
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
                 )}
