@@ -7,7 +7,7 @@ const navItems = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/concierge", label: "Concierge" },
-  { href: "/tours/seoul-markets-tour", label: "Tours" },
+  { href: "/tours/seoul-markets", label: "Seoul Markets" },
   { href: "/tailored-walks", label: "Tailored walks" },
 ];
 

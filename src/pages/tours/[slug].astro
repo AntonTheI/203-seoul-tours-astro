@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { TourBookingForm } from "../../components/forms/TourBookingForm";
+import PracticalInfo from "../../components/tour/PracticalInfo";
 
 interface Stop {
   icon: string;
@@ -44,15 +45,7 @@ export async function getStaticPaths() {
 const { tour } = Astro.props;
 const { title, acf } = tour;
 
-const practicalInfo = [
-  { label: "Duration", value: acf.duration },
-  { label: "Walking level", value: acf.walking_level },
-  { label: "Meeting point", value: acf.meeting_point },
-  { label: "Start time", value: acf.start_time },
-  { label: "Best timing", value: acf.best_timing },
-];
-
-const stops: Stop[] = [1, 2, 3, 4, 5]
+const stops: Stop[] = [1, 2, 3, 4, 5, 6, 7, 8]
   .map((n) => ({
     icon: acf[`stop_${n}_icon`],
     title: acf[`stop_${n}_title`],
@@ -65,12 +58,12 @@ const stops: Stop[] = [1, 2, 3, 4, 5]
 
 <BaseLayout title={`${title.rendered} — Seoul Walking Tours`}>
   <div class="bg-natural-light">
-    <!-- Hero -->
+    <!-- Hero img -->
     <div class="relative h-116 overflow-hidden">
       <img
         class="object-cover w-full h-full object-[50%_70%]"
         src={acf.hero_image || "/assets/images/marketWideShot.jpg"}
-        alt={title.rendered}
+        alt="Market female vendor"
       />
       <h1
         class="absolute inset-0 flex items-center justify-center text-5xl lg:text-7xl text-white"
@@ -82,32 +75,22 @@ const stops: Stop[] = [1, 2, 3, 4, 5]
     <div
       class="max-w-7xl mx-auto flex flex-col lg:flex-row md:px-22 lg:px-32 gap-5 my-12"
     >
-      <!-- Mobile practical info -->
-      <div class="md:rounded-2xl lg:hidden bg-white p-5">
-        <h4 class="accent-label mb-4">PRACTICAL INFORMATION</h4>
-        <div>
-          {
-            practicalInfo.map((item, index) => (
-              <div class="text-sm">
-                <div class="flex justify-between">
-                  <span class="text-dark-chromatic-teal/70 pr-2">
-                    {item.label}
-                  </span>
-                  <span>{item.value}</span>
-                </div>
-                {index < practicalInfo.length - 1 && (
-                  <hr class="my-2 border-gray-200" />
-                )}
-              </div>
-            ))
-          }
-        </div>
-      </div>
+      <PracticalInfo
+        className="md:rounded-2xl lg:hidden bg-white p-5"
+        info={acf}
+      />
 
-      <!-- Main content -->
       <div class="flex flex-col flex-2 gap-8 bg-white md:rounded-3xl px-5">
-        <!-- Intro -->
-        <div class="flex flex-col pt-5">
+        <div class="pt-5">
+          <img
+            src="/assets/images/marketLady.jpg"
+            alt="market lady"
+            class="object-cover w-full h-full max-w-165 max-h-110"
+          />
+        </div>
+
+        <!-- Market tour description -->
+        <div class="flex flex-col">
           <h2 class="text-section font-semibold mb-4">{acf.intro_title}</h2>
           <div class="flex h-9 justify-center shrink-0">
             <div class="h-0.5 bg-accent-orange-23 w-[40%]"></div>
@@ -116,14 +99,13 @@ const stops: Stop[] = [1, 2, 3, 4, 5]
           <p class="whitespace-pre-line">{acf.intro_content}</p>
         </div>
 
-        <!-- Stops -->
         <div class="flex flex-col gap-4">
           {
             stops.map((stop, index) => (
               <div class="flex gap-4 flex-col">
                 <div class="flex gap-2 items-center">
                   <div
-                    class={`flex justify-center items-center text-xl font-bold rounded-full w-9 h-9 ${stop.icon === "!" ? "text-accent-orange-23 bg-medium-chromatic-teal" : "text-natural-light bg-accent-orange-23"}`}
+                    class={`flex justify-center items-center text-xl font-bold rounded-full w-9 h-9 ${stop.icon === "!" ? "text-accent-orange-23 bg-medium-chromatic-teal" : stop.icon === "?" ? "bg-accent-orange-23 text-natural-light" : "text-natural-light bg-accent-orange-23"}`}
                   >
                     {stop.icon}
                   </div>
@@ -158,28 +140,11 @@ const stops: Stop[] = [1, 2, 3, 4, 5]
         </div>
       </div>
 
-      <!-- Desktop sidebar -->
       <div class="lg:self-start flex-1 sticky top-17">
-        <div class="md:rounded-2xl hidden lg:block bg-white mb-8 px-5 py-10">
-          <h4 class="accent-label mb-4">PRACTICAL INFORMATION</h4>
-          <div>
-            {
-              practicalInfo.map((item, index) => (
-                <div class="text-sm">
-                  <div class="flex justify-between">
-                    <span class="text-dark-chromatic-teal/70 pr-2">
-                      {item.label}
-                    </span>
-                    <span>{item.value}</span>
-                  </div>
-                  {index < practicalInfo.length - 1 && (
-                    <hr class="my-2 border-gray-200" />
-                  )}
-                </div>
-              ))
-            }
-          </div>
-        </div>
+        <PracticalInfo
+          className="md:rounded-2xl hidden lg:block bg-white mb-8 px-5 py-10"
+          info={acf}
+        />
         <TourBookingForm
           className="flex flex-col gap-10 md:rounded-2xl bg-white px-5 py-10"
           client:visible
@@ -187,20 +152,18 @@ const stops: Stop[] = [1, 2, 3, 4, 5]
       </div>
     </div>
 
-    <!-- Personal note -->
-    {
-      acf.personal_note && (
-        <div class="bg-medium-chromatic-teal">
-          <div class="max-w-7xl mx-auto px-5 md:px-22 lg:px-32 py-12 md:py-22 lg:py-32">
-            <div class="border-l-2 border-accent-orange-23 px-10 lg:mx-10">
-              <h2 class="text-section font-semibold text-accent-orange-23">
-                A personal note
-              </h2>
-              <p class="text-natural-light">{acf.personal_note}</p>
-            </div>
-          </div>
+    <div class="bg-medium-chromatic-teal">
+      <div
+        class="max-w-7xl mx-auto px-5 md:px-22 lg:px-32 py-12 md:py-22 lg:py-32"
+      >
+        <div class="border-l-2 border-accent-orange-23 px-10 lg:mx-10">
+          <h2 class="text-section font-semibold text-accent-orange-23">
+            A personal note
+          </h2>
+          <div class="flex h-9 shrink-0"></div>
+          <p class="text-natural-light">{acf.personal_note}</p>
         </div>
-      )
-    }
+      </div>
+    </div>
   </div>
 </BaseLayout>
