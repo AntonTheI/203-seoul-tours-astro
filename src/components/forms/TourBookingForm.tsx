@@ -38,7 +38,6 @@ const formSchema = z.object({
       to: z.date().optional(),
     })
     .optional(),
-  flexibleDate: z.boolean(),
   extensions: z.array(z.string()).optional(),
   comment: z.string().optional(),
 });
@@ -63,13 +62,10 @@ export function TourBookingForm({ className }: { className?: string }) {
       email: "",
       groupSize: "",
       date: undefined,
-      flexibleDate: false,
       extensions: [],
       comment: "",
     },
   });
-
-  const isFlexibleDate = form.watch("flexibleDate");
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     // Do something with the form values.
@@ -169,7 +165,7 @@ export function TourBookingForm({ className }: { className?: string }) {
                 {isMobile ? (
                   <Drawer open={open} onOpenChange={setOpen}>
                     <DrawerTrigger asChild>
-                      <Button variant="outline" disabled={isFlexibleDate}>
+                      <Button variant="outline">
                         <CalendarIcon className="h-4 w-4" />
                         {field.value?.from
                           ? field.value.to &&
@@ -212,7 +208,7 @@ export function TourBookingForm({ className }: { className?: string }) {
                 ) : (
                   <Popover open={open} onOpenChange={setOpen}>
                     <PopoverTrigger asChild>
-                      <Button variant="outline" disabled={isFlexibleDate}>
+                      <Button variant="outline">
                         <CalendarIcon className="h-4 w-4" />
                         {field.value?.from
                           ? field.value.to &&
