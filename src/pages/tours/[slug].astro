@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Tours from "../../components/views/Tours.jsx";
+
+interface Tour {
+  slug: string;
+  title: { rendered: string };
+  content: { rendered: string };
+  acf: {
+    duration: string;
+    walking_level: string;
+    meeting_point: string;
+    start_time: string;
+    best_timing: string;
+    hero_image: string;
+    personal_note: string;
+  };
+}
+
+export async function getStaticPaths() {
+  const response = await fetch(
+    "http://localhost/tour-guide-site/?rest_route=/wp/v2/tours",
+  );
+  const tours: Tour[] = await response.json();
+
+  return tours.map((tour: any) => ({
+    params: { slug: tour.slug },
+    props: { tour },
+  }));
+}
+
+const { tour } = Astro.props;
+---
+
+<BaseLayout title={`${tour.title.rendered} — Seoul Walking Tours`}>
+  <Tours tour={tour} />
+</BaseLayout>
