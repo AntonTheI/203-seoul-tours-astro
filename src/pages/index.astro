@@ -1,13 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/sections/Hero.jsx";
-import AboutTours from "../components/sections/AboutTours.jsx";
-import Introduction from "../components/sections/Introduction.jsx";
-import TourCard from "../components/sections/TourCard.jsx";
-import TailoredWalks from "../components/sections/TailoredWalks.jsx";
-import TravelAssistant from "../components/sections/TravelAssistant.jsx";
-import Testimonials from "../components/sections/Testimonials.jsx";
-import SocialMediaGrid from "../components/sections/SocialMediaGrid.jsx";
+import Hero from "../components/sections/Hero.tsx";
+import AboutTours from "../components/sections/AboutTours.tsx";
+import Introduction from "../components/sections/Introduction.tsx";
+import TourCard from "../components/sections/TourCard.tsx";
+import TailoredWalks from "../components/sections/TailoredWalks.tsx";
+import TravelAssistant from "../components/sections/TravelAssistant.tsx";
+import Testimonials from "../components/sections/Testimonials.tsx";
+import SocialMediaGrid from "../components/sections/SocialMediaGrid.tsx";
 import { getAllTours } from "@/lib/api";
 
 const tours = await getAllTours();
