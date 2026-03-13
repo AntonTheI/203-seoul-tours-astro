@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Logo from "./Logo";
 import Links from "./Links";
+import { XIcon } from "lucide-react";
 
 const MobileMenu = ({ currentPath = "" }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +38,7 @@ const MobileMenu = ({ currentPath = "" }) => {
             <div className="flex justify-between px-4 py-2">
               <Logo />
               <button aria-label="Close menu" onClick={() => setIsOpen(false)}>
-                X
+                <XIcon />
               </button>
             </div>
             <div className="p-5">
