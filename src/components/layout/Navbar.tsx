@@ -25,8 +25,12 @@ const Navbar = ({ currentPath = "" }: Props) => {
       className={`fixed w-full py-2 top-0 z-50 transition-all duration-300 ${scrolled ? "border-b-[0.5px] border-gray-200 bg-natural-light/80 backdrop-blur-xs" : "text-white"}`}
     >
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-[1fr_auto_1fr] items-center">
+        <div className="flex justify-between items-center lg:hidden">
           <MobileMenu currentPath={currentPath} />
+          <Book />
+        </div>
+
+        <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center">
           <Logo />
           <Links
             className="hidden md:flex justify-between gap-8"
