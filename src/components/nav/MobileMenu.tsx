@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import Logo from "./Logo";
 import Links from "./Links";
 import { XIcon } from "lucide-react";
+import FooterBrand from "../layout/FooterBrand";
 
 const MobileMenu = ({ currentPath = "" }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,18 +35,21 @@ const MobileMenu = ({ currentPath = "" }) => {
       {mounted &&
         isOpen &&
         createPortal(
-          <nav className="fixed inset-0 h-full bg-white z-100 overflow-y-auto">
+          <nav className="flex flex-col fixed inset-0 h-full bg-white z-100 overflow-y-auto">
             <div className="flex justify-between px-4 py-2">
               <Logo />
               <button aria-label="Close menu" onClick={() => setIsOpen(false)}>
                 <XIcon />
               </button>
             </div>
-            <div className="p-5">
+            <div className="flex flex-col flex-1 justify-between">
               <Links
-                className="flex flex-col gap-4 text-2xl font-semibold"
+                className="flex flex-col gap-4 text-2xl font-semibold p-5"
                 currentPath={currentPath}
               />
+              <div className="bg-dark-chromatic-teal py-10">
+                <FooterBrand />
+              </div>
             </div>
           </nav>,
           document.body,
