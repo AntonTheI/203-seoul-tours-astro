@@ -1,6 +1,6 @@
 const SocialMediaGrid = () => {
   return (
-    <div className="flex flex-col max-w-7xl mx-auto px-5 py-14 md:px-12 lg:px-32 gap-4">
+    <div className="flex flex-col max-w-7xl mx-auto px-5 py-14 md:px-22 lg:px-32 gap-4">
       <div>
         <h4 className="accent-label">#SOCIAL MEDIA</h4>
         <h2 className="text-section font-semibold">Recent posts</h2>

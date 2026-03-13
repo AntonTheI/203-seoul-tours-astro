@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <footer className=" text-dark-atmospheric-teal ">
       <div className="bg-dark-chromatic-teal">
-        <div className="max-w-7xl mx-auto flex flex-col py-6 px-5 lg:flex-row md:px-12 md:py-10 lg:py-14 lg:px-32 lg:justify-between">
+        <div className="max-w-7xl mx-auto flex flex-col py-6 px-5 lg:flex-row md:px-22 md:py-10 lg:py-14 lg:px-32 lg:justify-between">
           <div className="flex flex-col lg:flex-1">
             <img
               src="/assets/images/logo wide.svg"

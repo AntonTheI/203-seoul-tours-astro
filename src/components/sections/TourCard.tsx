@@ -12,7 +12,7 @@ const tagColors: Record<TourTag, string> = {
 const TourCard = ({ tours = [] }: { tours: Tour[] }) => {
   return (
     <div className="">
-      <div className="max-w-7xl mx-auto flex flex-col gap-4 py-14 px-5 md:px-14 lg:px-32">
+      <div className="max-w-7xl mx-auto flex flex-col gap-4 py-14 px-5 md:px-22 lg:px-32">
         <p className="accent-label">EXPLORE TOURS</p>
 
         <div className="flex flex-col gap-4 lg:gap-6">

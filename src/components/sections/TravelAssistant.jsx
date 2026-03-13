@@ -24,7 +24,7 @@ const services = [
 const TravelAssistant = () => {
   return (
     <div>
-      <div className="max-w-7xl mx-auto flex flex-col gap-4 px-5 md:px-12 lg:px-32 py-14 lg:py-28">
+      <div className="max-w-7xl mx-auto flex flex-col gap-4 px-5 md:px-22 lg:px-32 py-14 lg:py-28">
         <h4 className="accent-label lg:text-center">KOREA TRAVEL ASSISTANT</h4>
 
         <div className="flex flex-col gap-10 lg:items-center">
