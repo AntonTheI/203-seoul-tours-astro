@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { TourBookingForm } from "../../components/forms/TourBookingForm";
 import PracticalInfo from "../../components/tour/PracticalInfo";
 import PersonalNote from "@/components/tour/PersonalNote.astro";
+import { getAllTours, type Tour } from "../../lib/api.ts";
 
 interface Stop {
   icon: string;
@@ -12,37 +13,14 @@ interface Stop {
   image: string;
 }
 
-interface Tour {
-  slug: string;
-  title: { rendered: string };
-  content: { rendered: string };
-  acf: {
-    duration: string;
-    walking_level: string;
-    meeting_point: string;
-    start_time: string;
-    best_timing: string;
-    hero_image: string;
-    intro_title: string;
-    intro_subtitle: string;
-    intro_content: string;
-    personal_note: string;
-    [key: string]: string;
-  };
-}
-
 export async function getStaticPaths() {
-  const response = await fetch(
-    "http://localhost/tour-guide-site/?rest_route=/wp/v2/tours",
-  );
-  const tours: Tour[] = await response.json();
+  const tours = await getAllTours();
 
   return tours.map((tour: Tour) => ({
     params: { slug: tour.slug },
     props: { tour },
   }));
 }
-
 const { tour } = Astro.props;
 const { title, acf } = tour;
 

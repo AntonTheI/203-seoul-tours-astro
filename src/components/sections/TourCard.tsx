@@ -1,38 +1,15 @@
-const tours = [
-  {
-    id: 1,
-    image: "/assets/images/marketLady.jpg",
-    title: "Seoul markets",
-    description:
-      "Seoul markets a carefully designed walk that explores everyday life, lived spaces, and the rhythms that shape the city from the ground up.",
-    tag: { name: "Popular", color: "rgba(191, 231, 255" },
-    cost: "55",
-    time: "1 hour",
-    slug: "seoul-markets",
-  },
-  {
-    id: 2,
-    image: "/assets/images/cityWall.jpg",
-    title: "City Wall Tour",
-    description: "Visit ancient temples",
-    tag: { name: "Scenery", color: "#46718C" },
-    cost: "45",
-    time: "2 hours",
-    slug: "city-wall-tour",
-  },
-  {
-    id: 3,
-    image: "/assets/images/sewingDistrict.jpg",
-    title: "Sewing district Tour",
-    description: "Taste Korean cuisine",
-    tag: { name: "Great Food", color: "#335266" },
-    cost: "75",
-    time: "1.5 hour",
-    slug: "sewing-district-tour",
-  },
-];
+import { type Tour, TourTag } from "@/lib/api";
 
-const TourCard = () => {
+const tagColors: Record<TourTag, string> = {
+  [TourTag.popular]: "rgba(191, 231, 255)",
+  [TourTag.scenery]: "#46718C",
+  [TourTag.food]: "#335266",
+  [TourTag.culture]: "#8C6646",
+  [TourTag.history]: "#4a8a8a",
+  [TourTag.none]: "",
+};
+
+const TourCard = ({ tours = [] }: { tours: Tour[] }) => {
   return (
     <div className="">
       <div className="max-w-7xl mx-auto flex flex-col gap-4 py-14 px-5 md:px-14 lg:px-32">
@@ -54,31 +31,36 @@ const TourCard = () => {
             <div className="flex overflow-x-auto gap-6">
               {tours.map((tour) => (
                 <div
-                  key={tour.id}
+                  key={tour.slug}
                   className="flex shrink-0 w-90 flex-col rounded-4xl bg-white overflow-hidden border-[0.5px] border-gray-400 my-4"
                 >
                   <div className="relative">
                     <img
                       loading="lazy"
                       className="aspect-3/2 object-cover"
-                      src={tour.image}
-                      alt={tour.description}
+                      src={
+                        tour.acf.hero_image || "/assets/images/marketLady.jpg"
+                      }
+                      alt={tour.acf.card_describtion}
                     />
-                    <div
-                      className="absolute top-6 -left-10 text-medium-chromatic-teal py-2 text-[15px] px-14 font-medium -rotate-45"
-                      style={{ background: tour.tag.color }}
-                    >
-                      {tour.tag.name}
-                    </div>
+                    {tour.acf.tag && tour.acf.tag !== "none" && (
+                      <div
+                        className="absolute top-6 -left-10 text-medium-chromatic-teal py-2 text-[15px] px-14 font-medium -rotate-45"
+                        style={{ background: tagColors[tour.acf.tag] }}
+                      >
+                        {tour.acf.tag.charAt(0).toUpperCase() +
+                          tour.acf.tag.slice(1)}
+                      </div>
+                    )}
                   </div>
 
                   <div className="p-6 flex-1 flex flex-col gap-6">
                     <div>
                       <h3 className="text-subsection font-semibold mb-4">
-                        {tour.title}
+                        {tour.title.rendered}
                       </h3>
                       <p className="text-[15px]/6 font-normal text-[#555555]">
-                        {tour.description}
+                        {tour.acf.card_describtion}
                       </p>
                     </div>
 
@@ -87,7 +69,7 @@ const TourCard = () => {
                         Why i like this walk:
                       </h4>
                       <p className="italic text-medium-chromatic-teal text-sm">
-                        It reflects how I experience the city myself.
+                        {tour.acf.why_i_like_this_tour}
                       </p>
                     </div>
 
