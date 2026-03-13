@@ -53,14 +53,13 @@ const TourCard = ({ tours = [] }: { tours: Tour[] }) => {
                       </div>
                     )}
                   </div>
-
                   <div className="p-6 flex-1 flex flex-col gap-6">
                     <div>
                       <h3 className="text-subsection font-semibold mb-4">
                         {tour.title.rendered}
                       </h3>
                       <p className="text-[15px]/6 font-normal text-[#555555]">
-                        {tour.acf.card_describtion}
+                        {tour.acf.card_description}
                       </p>
                     </div>
 
