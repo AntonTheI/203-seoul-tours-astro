@@ -1,6 +1,3 @@
-const WP_API_REQUEST =
-  "http://localhost/tour-guide-site/?rest_route=/tours/v1/booking";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import * as z from "zod";
@@ -38,11 +35,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
+import { Label } from "@/components/ui/label";
 
 import { type Tour } from "@/lib/api";
 
 import { useState, useEffect } from "react";
-import { fontData } from "astro:assets";
+
+const WP_API_REQUEST =
+  "http://localhost/tour-guide-site/?rest_route=/tours/v1/booking";
 
 interface TourOption {
   value: string;
@@ -76,9 +76,11 @@ export function TourBookingForm({
 
   const [isMobile, setIsMobile] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [formData, setFormData] = useState({});
-  const [status, setStatus] = useState("");
-  const [errorMessage, setErrorMessage] = useState("second");
+  const [formData, setFormData] = useState<z.infer<typeof formSchema> | null>(
+    null,
+  );
+  const [status, setStatus] = useState("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const tourExtensions: TourOption[] = otherTours.map((tour) => ({
     value: tour.slug,
@@ -407,6 +409,41 @@ export function TourBookingForm({
       >
         Send Booking Request
       </Button>
+
+      {/* Dialog */}
+
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Ready to send your booking request?</DialogTitle>
+            <DialogDescription>
+              By sending this request, your information will be used solely to
+              process your booking and will not be shared with third parties.
+            </DialogDescription>
+          </DialogHeader>
+
+          {status === "error" && (
+            <p className="text-sm text-red-600">{errorMessage}</p>
+          )}
+
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => setIsDialogOpen(false)}
+              disabled={status === "loading"}
+            >
+              Go back
+            </Button>
+            <Button
+              onClick={sendBooking}
+              disabled={status === "loading"}
+              className="bg-accent-orange-23"
+            >
+              {status === "loading" ? "Sending..." : "Confirm & Send"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </form>
   );
 }
