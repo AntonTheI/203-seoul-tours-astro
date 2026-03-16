@@ -35,8 +35,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
-import { Label } from "@/components/ui/label";
-
 import { type Tour } from "@/lib/api";
 
 import { useState, useEffect } from "react";
@@ -64,9 +62,11 @@ const formSchema = z.object({
 });
 
 export function TourBookingForm({
+  tourSlug,
   className,
   otherTours = [],
 }: {
+  tourSlug: string;
   className?: string;
   otherTours?: Tour[];
 }) {
@@ -107,12 +107,24 @@ export function TourBookingForm({
   }
 
   async function sendBooking() {
+    if (!formData) return;
+
     setStatus("loading");
     try {
       const request = await fetch(WP_API_REQUEST, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          tourSlug: tourSlug,
+          dateFrom: formData.date?.from
+            ? format(formData.date.from, "yyyy-MM-dd")
+            : "",
+          dateTo: formData.date?.to
+            ? format(formData.date.to, "yyyy-MM-dd")
+            : "",
+          date: undefined,
+        }),
       });
       const response = await request.json();
 
@@ -403,12 +415,18 @@ export function TourBookingForm({
       </div>
 
       {/* Submit button */}
-      <Button
-        type="submit"
-        className="rounded-4xl text-xl py-6 bg-accent-orange-23"
-      >
-        Send Booking Request
-      </Button>
+      {status === "success" ? (
+        <div className="rounded-xl bg-green-50 border border-green-200 p-4 text-green-800 text-sm">
+          ✅ Booking request sent! I will get back to you soon.
+        </div>
+      ) : (
+        <Button
+          type="submit"
+          className="rounded-4xl text-xl py-6 bg-accent-orange-23"
+        >
+          Send Booking Request
+        </Button>
+      )}
 
       {/* Dialog */}
 

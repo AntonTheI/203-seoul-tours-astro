@@ -130,6 +130,7 @@ const otherTours = await getOtherTours(tour.slug);
           info={acf}
         />
         <TourBookingForm
+          tourSlug={tour.slug}
           className="flex flex-col gap-10 md:rounded-2xl bg-white px-5 py-10"
           client:visible
           otherTours={otherTours}
