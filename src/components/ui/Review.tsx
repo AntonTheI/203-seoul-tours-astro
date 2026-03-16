@@ -1,4 +1,10 @@
-const Review = ({ review }) => {
+interface Reviews {
+  name: string;
+  review: string;
+  country: string;
+}
+
+const Review = ({ review }: { review: Reviews }) => {
   return (
     <div
       key={review.name}

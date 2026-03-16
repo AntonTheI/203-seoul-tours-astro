@@ -1,3 +1,6 @@
+const WP_API_REQUEST =
+  "http://localhost/tour-guide-site/?rest_route=/tours/v1/booking";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import * as z from "zod";
@@ -25,10 +28,26 @@ import { format } from "date-fns";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "../ui/textarea";
 import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
 
 import { type Tour } from "@/lib/api";
 
 import { useState, useEffect } from "react";
+import { fontData } from "astro:assets";
+
+interface TourOption {
+  value: string;
+  label: string;
+}
 
 const formSchema = z.object({
   name: z.string().optional(),
@@ -44,11 +63,6 @@ const formSchema = z.object({
   comment: z.string().optional(),
 });
 
-interface TourOption {
-  value: string;
-  label: string;
-}
-
 export function TourBookingForm({
   className,
   otherTours = [],
@@ -61,6 +75,10 @@ export function TourBookingForm({
   const [selectValue, setSelectValue] = useState("");
 
   const [isMobile, setIsMobile] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [formData, setFormData] = useState({});
+  const [status, setStatus] = useState("");
+  const [errorMessage, setErrorMessage] = useState("second");
 
   const tourExtensions: TourOption[] = otherTours.map((tour) => ({
     value: tour.slug,
@@ -80,8 +98,35 @@ export function TourBookingForm({
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
+    setFormData(data);
+    setIsDialogOpen(true);
     // Do something with the form values.
     console.log(data);
+  }
+
+  async function sendBooking() {
+    setStatus("loading");
+    try {
+      const request = await fetch(WP_API_REQUEST, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const response = await request.json();
+
+      if (!request.ok) {
+        throw new Error(response.message || "Something went wrong.");
+      }
+
+      setStatus("success");
+      setIsDialogOpen(false);
+      form.reset();
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(
+        error instanceof Error ? error.message : "Something went wrong.",
+      );
+    }
   }
 
   useEffect(() => {

@@ -1,5 +1,4 @@
 const WP_API = "http://localhost/tour-guide-site/?rest_route=/wp/v2/tours";
-
 export interface Tour {
   slug: string;
   title: { rendered: string };
