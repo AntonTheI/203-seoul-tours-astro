@@ -26,6 +26,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "../ui/textarea";
 import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";
 
+import { type Tour } from "@/lib/api";
+
 import { useState, useEffect } from "react";
 
 const formSchema = z.object({
@@ -42,18 +44,28 @@ const formSchema = z.object({
   comment: z.string().optional(),
 });
 
-export const TOUR_EXTENSIONS = [
-  { value: "wall", label: "City wall tour" },
-  { value: "sewing", label: "Sewing District tour " },
-  // etc
-];
+interface TourOption {
+  value: string;
+  label: string;
+}
 
-export function TourBookingForm({ className }: { className?: string }) {
+export function TourBookingForm({
+  className,
+  otherTours = [],
+}: {
+  className?: string;
+  otherTours?: Tour[];
+}) {
   const [open, setOpen] = useState(false);
   const [clickCount, setClickCount] = useState(0);
   const [selectValue, setSelectValue] = useState("");
 
   const [isMobile, setIsMobile] = useState(false);
+
+  const tourExtensions: TourOption[] = otherTours.map((tour) => ({
+    value: tour.slug,
+    label: tour.title.rendered,
+  }));
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -278,7 +290,7 @@ export function TourBookingForm({ className }: { className?: string }) {
                   <SelectValue placeholder="Add an extension" />
                 </SelectTrigger>
                 <SelectContent>
-                  {TOUR_EXTENSIONS.map((opt) => (
+                  {tourExtensions.map((opt) => (
                     <SelectItem key={opt.value} value={opt.value}>
                       {opt.label}
                     </SelectItem>
@@ -291,7 +303,7 @@ export function TourBookingForm({ className }: { className?: string }) {
               {field.value && field.value.length > 0 && (
                 <div className="flex flex-wrap gap-2 mt-2">
                   {field.value.map((val) => {
-                    const label = TOUR_EXTENSIONS.find(
+                    const label = tourExtensions.find(
                       (o) => o.value === val,
                     )?.label;
                     return (

@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { TourBookingForm } from "../../components/forms/TourBookingForm";
 import PracticalInfo from "../../components/tour/PracticalInfo";
 import PersonalNote from "@/components/tour/PersonalNote.astro";
-import { getAllTours, type Tour } from "../../lib/api.ts";
+import { getAllTours, getOtherTours, type Tour } from "../../lib/api.ts";
 
 interface Stop {
   icon: string;
@@ -21,6 +21,7 @@ export async function getStaticPaths() {
     props: { tour },
   }));
 }
+
 const { tour } = Astro.props;
 const { title, acf } = tour;
 
@@ -33,6 +34,8 @@ const stops: Stop[] = [1, 2, 3, 4, 5, 6, 7, 8]
     image: acf[`stop_${n}_image`],
   }))
   .filter((stop) => stop.title);
+
+const otherTours = await getOtherTours(tour.slug);
 ---
 
 <BaseLayout title={`${title.rendered} — Seoul Walking Tours`}>
@@ -129,6 +132,7 @@ const stops: Stop[] = [1, 2, 3, 4, 5, 6, 7, 8]
         <TourBookingForm
           className="flex flex-col gap-10 md:rounded-2xl bg-white px-5 py-10"
           client:visible
+          otherTours={otherTours}
         />
       </div>
     </div>

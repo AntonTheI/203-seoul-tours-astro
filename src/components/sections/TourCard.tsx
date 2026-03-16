@@ -10,6 +10,8 @@ const tagColors: Record<TourTag, string> = {
 };
 
 const TourCard = ({ tours = [] }: { tours: Tour[] }) => {
+  console.log(tours);
+
   return (
     <div className="">
       <div className="max-w-7xl mx-auto flex flex-col gap-4 py-14 px-5 md:px-22 lg:px-32">
