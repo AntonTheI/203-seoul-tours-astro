@@ -21,9 +21,9 @@ const currentPath = Astro.url.pathname;
     {description && <meta name="description" content={description} />}
     <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg" />
   </head>
-  <body>
+  <body class="min-h-screen flex flex-col">
     <Navbar currentPath={currentPath} client:load />
-    <main>
+    <main class="flex-1">
       <slot />
     </main>
     <Footer />
