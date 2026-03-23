@@ -439,6 +439,9 @@ export function TourBookingForm({
               process your booking and will not be shared with third parties.
             </DialogDescription>
           </DialogHeader>
+          <a href="/privacy" target="_blank" className="text-xs underline">
+            Privacy Policy ↗
+          </a>
 
           {status === "error" && (
             <p className="text-sm text-red-600">{errorMessage}</p>
