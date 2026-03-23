@@ -1,14 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import * as z from "zod";
-import {
-  Field,
-  FieldLabel,
-  FieldError,
-  FieldGroup,
-  FieldContent,
-  FieldDescription,
-} from "../ui/field";
+import { Field, FieldLabel, FieldError, FieldDescription } from "../ui/field";
 import { Input } from "../ui/input";
 import {
   Select,
@@ -22,18 +15,15 @@ import { Button } from "../ui/button";
 import { CalendarIcon, XIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
 import { format } from "date-fns";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "../ui/textarea";
 import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "../ui/dialog";
 import { type Tour } from "@/lib/api";
 
