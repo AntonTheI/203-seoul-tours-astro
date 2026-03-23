@@ -19,7 +19,7 @@ const services = [
 const TailoredWalks = () => {
   return (
     <div className="bg-medium-chromatic-teal">
-      <div className="max-w-7xl mx-auto px-5  md:px-22 lg:px-32  lg:py-16 py-14">
+      <div className="max-w-7xl mx-auto px-5  md:px-22 lg:px-32  py-section-lg">
         <div className=" text-center flex flex-col gap-4">
           <p className="flex justify-center accent-label lg:justify-start">
             TAILORED WALKS

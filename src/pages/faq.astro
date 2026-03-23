@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { FaqAccordion } from "@/components/sections/FaqAccordion";
+---
+
+<BaseLayout title="FAQ — Seoul Walking Tours">
+  <div class="bg-natural-light min-h-screen">
+    <div
+      class="max-w-7xl mx-auto px-5 md:px-22 lg:px-32 py-section-lg flex flex-col gap-8"
+    >
+      <div class="mt-14">
+        <h1 class="text-4xl font-semibold mb-2">Frequently Asked Questions</h1>
+        <p class="text-black/60">
+          Everything you need to know before booking a tour.
+        </p>
+      </div>
+
+      <FaqAccordion client:visible />
+    </div>
+  </div>
+</BaseLayout>

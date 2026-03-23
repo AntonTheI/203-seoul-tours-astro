@@ -55,15 +55,17 @@ const otherTours = await getOtherTours(tour.slug);
     </div>
 
     <div
-      class="max-w-7xl mx-auto flex flex-col lg:flex-row md:px-22 lg:px-32 gap-5 my-12"
+      class="max-w-7xl mx-auto flex flex-col lg:flex-row md:px-22 lg:px-32 gap-5 py-section-lg"
     >
       <PracticalInfo
         className="md:rounded-2xl lg:hidden bg-white p-5"
         info={acf}
       />
 
-      <div class="flex flex-col flex-2 gap-8 bg-white md:rounded-3xl px-5">
-        <div class="pt-5">
+      <div
+        class="flex flex-col flex-2 gap-8 bg-white md:rounded-3xl px-5 py-10"
+      >
+        <div class="">
           <img
             src="/assets/images/marketLady.jpg"
             alt="market lady"

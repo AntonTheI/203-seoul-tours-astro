@@ -35,12 +35,12 @@ const Testimonials = () => {
 
   return (
     <div className="bg-natural-light">
-      <div className="max-w-7xl mx-auto flex flex-col justify-center items-center gap-4 px-5 py-14  md:px-22 lg:px-32  ">
+      <div className="max-w-7xl mx-auto flex flex-col justify-center items-center gap-4 px-5 py-section-lg  md:px-22 lg:px-32  ">
         <h4 className="accent-label text-center">REVIEWS</h4>
         <h2 className="text-section font-semibold leading-none text-center">
           Don't just take my word for it
         </h2>
-        <div className="bg-white p-4 rounded-2xl">
+        <div className="bg-white p-10 rounded-2xl">
           <Review review={reviews[index]} />
         </div>
         <div className="flex gap-4 mt-8">

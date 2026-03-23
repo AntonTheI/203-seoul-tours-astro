@@ -114,7 +114,7 @@ Or use rgba:
 body {
   font-family: "Roboto", sans-serif;
   /* font-family: "Roboto slab", serif; */
-  /* background-color: #fef6f3; */
+  background-color: #fef6f3;
 }
 
 @theme inline {
@@ -156,6 +156,18 @@ body {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* top and bottom padding on major page sections: */
+  --spacing-section-lg: clamp(48px, 8vw, 96px);
+
+  /* gap between major content blocks: */
+  --spacing-section: clamp(32px, 5vw, 64px);
+
+  /* gap between related elements within a section: */
+  --spacing-section-sm: clamp(24px, 3.5vw, 48px);
+
+  /* gap between text and image columns: */
+  --spacing-col-gap: clamp(24px, 4vw, 64px);
 }
 
 .dark {
