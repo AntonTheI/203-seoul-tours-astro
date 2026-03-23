@@ -5,6 +5,10 @@ const FooterLegal = () => {
         <h4 className="text-xs">
           © 2026 이공삼 (Igongsam). All rights reserved.
         </h4>
+        <a href="/privacy" className="text-xs underline">
+          Privacy Policy
+        </a>
+
         <p className="text-[10px] text-center ">
           상호: 이공삼 (Igongsam) | 대표자: Jitse Jager | 등록번호: 548-27-02017
         </p>
