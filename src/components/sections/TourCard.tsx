@@ -34,7 +34,7 @@ const TourCard = ({ tours = [] }: { tours: Tour[] }) => {
               {tours.map((tour) => (
                 <div
                   key={tour.slug}
-                  className="flex shrink-0 w-90 flex-col rounded-4xl bg-white overflow-hidden border-[0.5px] border-gray-400 my-4"
+                  className="flex shrink-0 w-81 flex-col rounded-4xl bg-white overflow-hidden border-[0.5px] border-gray-400 my-4"
                 >
                   <div className="relative">
                     <img
@@ -55,9 +55,9 @@ const TourCard = ({ tours = [] }: { tours: Tour[] }) => {
                       </div>
                     )}
                   </div>
-                  <div className="p-6 flex-1 flex flex-col gap-6">
+                  <div className="p-5 flex-1 flex flex-col gap-6">
                     <div>
-                      <h3 className="text-subsection font-semibold mb-4">
+                      <h3 className="text-subsection font-semibold mb-2">
                         {tour.title.rendered}
                       </h3>
                       <p className="text-[15px]/6 font-normal text-[#555555]">
@@ -74,7 +74,7 @@ const TourCard = ({ tours = [] }: { tours: Tour[] }) => {
                       </p>
                     </div>
 
-                    <div className="flex justify-center rounded-full border-accent-orange-23 border py-3.5 px-6 mb-4">
+                    <div className="flex justify-center rounded-full border-accent-orange-23 border py-3.5 px-6 mb-3">
                       <a
                         href={`/tours/${tour.slug}`}
                         className="font-medium text-accent-orange-23 self-end"
