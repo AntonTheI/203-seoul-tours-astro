@@ -3,7 +3,7 @@ import React from "react";
 const Introduction = () => {
   return (
     <div className="bg-natural-light">
-      <div className="max-w-7xl mx-auto px-5 py-section-lg md:px-22 lg:px-32 ">
+      <div className="max-w-7xl mx-auto py-section-lg px-5 md:px-22 lg:px-32">
         {/* <img
         className="w-32 h-32 rounded-full object-cover float-right m-2"
         src="/assets/images/jitseProfilePic.jpg"
