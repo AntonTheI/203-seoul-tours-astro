@@ -9,7 +9,9 @@ const FooterNav = () => {
       </div>
       <div className="mt-6">
         <h4 className="text-accent-orange-23 text-sm mb-4">GET IN TOUCH</h4>
-        <p className="underline">contact@jitsejager.com</p>
+        <a href="mailto:contact@jitsejager.com" className="underline">
+          contact@jitsejager.com
+        </a>
       </div>
     </div>
   );
