@@ -22,12 +22,12 @@ const FooterBrand = () => {
           {mediaLinks.map((link, index) => (
             <div
               key={index}
-              className="flex rounded-full border p-2 lg:min-w-13.5"
+              className="flex rounded-full border p-2 lg:min-w-13.5 "
             >
               <img
                 src={link.logo}
                 alt={link.logoName}
-                className="flex justify-center items-center h-6.25 w-6.25 lg:h-9 lg:w-9"
+                className="flex justify-center items-center h-6.25 w-6.25 lg:h-9 lg:w-9 hover:text-accent-orange-23"
               />
             </div>
           ))}

@@ -3,12 +3,15 @@ import Logo from "../nav/Logo";
 import Book from "../nav/Book";
 import MobileMenu from "../nav/MobileMenu";
 import { useEffect, useState } from "react";
+import type { Tour } from "@/lib/api";
 
 interface Props {
   currentPath?: string;
+  linkProps?: string;
+  tours?: Tour[];
 }
 
-const Navbar = ({ currentPath = "" }: Props) => {
+const Navbar = ({ currentPath = "", tours = [] }: Props) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -26,15 +29,17 @@ const Navbar = ({ currentPath = "" }: Props) => {
     >
       <div className="max-w-7xl mx-auto px-5 md:px-22 lg:px-32  ">
         <div className="flex justify-between items-center lg:hidden">
-          <MobileMenu currentPath={currentPath} />
+          <MobileMenu currentPath={currentPath} tours={tours} />
           <Book />
         </div>
 
         <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center">
           <Logo />
           <Links
-            className="hidden md:flex justify-between gap-8"
+            className="hidden md:flex justify-between gap-8 "
             currentPath={currentPath}
+            linkProps="text-medium-chromatic-teal hover:text-accent-orange-23"
+            tours={tours}
           />
           <div className="flex justify-end">
             <Book />

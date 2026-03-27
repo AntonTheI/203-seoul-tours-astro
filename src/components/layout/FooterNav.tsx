@@ -5,11 +5,17 @@ const FooterNav = () => {
     <div className="flex justify-between lg:flex-1">
       <div className="mt-6">
         <h4 className="text-accent-orange-23 text-sm mb-4">EXPLORE</h4>
-        <Links className="flex flex-col gap-2" />
+        <Links
+          className="flex flex-col gap-2"
+          linkProps="hover:text-accent-orange-23"
+        />
       </div>
       <div className="mt-6">
         <h4 className="text-accent-orange-23 text-sm mb-4">GET IN TOUCH</h4>
-        <a href="mailto:contact@jitsejager.com" className="underline">
+        <a
+          href="mailto:contact@jitsejager.com"
+          className="underline hover:text-accent-orange-23"
+        >
           contact@jitsejager.com
         </a>
       </div>

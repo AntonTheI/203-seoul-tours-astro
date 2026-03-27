@@ -4,8 +4,14 @@ import Logo from "./Logo";
 import Links from "./Links";
 import { XIcon } from "lucide-react";
 import FooterBrand from "../layout/FooterBrand";
+import type { Tour } from "@/lib/api";
 
-const MobileMenu = ({ currentPath = "" }) => {
+interface Props {
+  currentPath?: string;
+  tours?: Tour[];
+}
+
+const MobileMenu = ({ currentPath = "", tours = [] }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -58,8 +64,9 @@ const MobileMenu = ({ currentPath = "" }) => {
             </div>
             <div className="flex flex-col flex-1 justify-between">
               <Links
-                className="flex flex-col gap-4 text-2xl font-semibold p-5"
+                className="flex flex-col gap-4 text-2xl font-semibold p-5 text-medium-chromatic-teal"
                 currentPath={currentPath}
+                tours={tours}
               />
               <div className="bg-dark-chromatic-teal py-10">
                 <FooterBrand />

@@ -10,8 +10,6 @@ const tagColors: Record<TourTag, string> = {
 };
 
 const TourCard = ({ tours = [] }: { tours: Tour[] }) => {
-  console.log(tours);
-
   return (
     <div className="bg-white">
       <div className="max-w-7xl mx-auto flex flex-col gap-4 py-section-lg px-5 md:px-22 lg:px-32">
@@ -74,10 +72,10 @@ const TourCard = ({ tours = [] }: { tours: Tour[] }) => {
                       </p>
                     </div>
 
-                    <div className="flex justify-center rounded-full border-accent-orange-23 border py-3.5 px-6 mb-3">
+                    <div className="flex justify-center rounded-full border-accent-orange-23 border py-3.5 px-6 mb-3 group cursor-pointer hover:bg-accent-orange-23  transition-colors">
                       <a
                         href={`/tours/${tour.slug}`}
-                        className="font-medium text-accent-orange-23 self-end"
+                        className="font-medium text-medium-chromatic-teal group-hover:text-natural-light self-end transition-colors"
                       >
                         Explore this tour
                       </a>
