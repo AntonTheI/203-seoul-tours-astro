@@ -1,3 +1,6 @@
+import { createClient } from "@sanity/client";
+import { createImageUrlBuilder } from "@sanity/image-url";
+
 const WP_API = "http://localhost/tour-guide-site/?rest_route=/wp/v2/tours";
 export interface Tour {
   slug: string;
@@ -47,4 +50,19 @@ export async function getAllTours(): Promise<Tour[]> {
 export async function getOtherTours(currentSlug: string): Promise<Tour[]> {
   const tours = await getAllTours();
   return tours.filter((tour) => tour.slug !== currentSlug);
+}
+
+export const client = createClient({
+  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
+  dataset: import.meta.env.PUBLIC_SANITY_DATASET,
+  useCdn: true,
+  apiVersion: "2024-01-01",
+});
+
+const builder = createImageUrlBuilder(client);
+
+export function urlFor(source: any, width?: number) {
+  let img = builder.image(source).format("webp");
+  if (width) img = img.width(width);
+  return img.url();
 }
