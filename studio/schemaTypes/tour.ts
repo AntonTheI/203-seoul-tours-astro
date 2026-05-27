@@ -97,44 +97,18 @@ export const tour = defineType({
     }),
 
     // Practical Info
-
     defineField({
-      name: 'duration',
-      title: 'Duration',
-      type: 'string',
+      name: 'practicalInfo',
+      title: 'Practical Info',
+      type: 'object',
       group: 'practicalInfo',
-    }),
-
-    // walking level
-    defineField({
-      name: 'walkingLevel',
-      title: 'Walking Level',
-      type: 'string',
-      group: 'practicalInfo',
-    }),
-
-    // meeting point
-    defineField({
-      name: 'meetingPoint',
-      title: 'Meeting Point',
-      type: 'string',
-      group: 'practicalInfo',
-    }),
-
-    // start time
-    defineField({
-      name: 'startTime',
-      title: 'Start Time',
-      type: 'string',
-      group: 'practicalInfo',
-    }),
-
-    // best timing
-    defineField({
-      name: 'bestTiming',
-      title: 'Best Timing',
-      type: 'string',
-      group: 'practicalInfo',
+      fields: [
+        defineField({ name: 'duration', title: 'Duration', type: 'string' }),
+        defineField({ name: 'walkingLevel', title: 'Walking Level', type: 'string' }),
+        defineField({ name: 'meetingPoint', title: 'Meeting Point', type: 'string' }),
+        defineField({ name: 'startTime', title: 'Start Time', type: 'string' }),
+        defineField({ name: 'bestTiming', title: 'Best Timing', type: 'string' }),
+      ],
     }),
 
     // Itinerary stops
