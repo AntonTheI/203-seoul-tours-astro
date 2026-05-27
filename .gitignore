@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 # images
 public/assets/
+
+# Claude 
+CLAUDE.md
+.claude/
