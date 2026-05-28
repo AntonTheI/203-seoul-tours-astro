@@ -3,54 +3,40 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { TourBookingForm } from "../../components/forms/TourBookingForm";
 import PracticalInfo from "../../components/tour/PracticalInfo";
 import PersonalNote from "@/components/tour/PersonalNote.astro";
-import { getAllTours, getOtherTours, type Tour } from "../../lib/api.ts";
-
-interface Stop {
-  icon: string;
-  title: string;
-  subtitle: string;
-  content: string;
-  image: string;
-}
+import { getAllTours, getOtherTours } from "../../lib/api.ts";
+import type { Tour } from "@/types/tour";
+import { PortableText } from "astro-portabletext";
 
 export async function getStaticPaths() {
   const tours = await getAllTours();
 
   return tours.map((tour: Tour) => ({
-    params: { slug: tour.slug },
+    params: { slug: tour.slug.current },
     props: { tour },
   }));
 }
 
 const { tour } = Astro.props;
-const { title, acf } = tour;
+const { title } = tour;
 
-const stops: Stop[] = [1, 2, 3, 4, 5, 6, 7, 8]
-  .map((n) => ({
-    icon: acf[`stop_${n}_icon`],
-    title: acf[`stop_${n}_title`],
-    subtitle: acf[`stop_${n}_subtitle`],
-    content: acf[`stop_${n}_content`],
-    image: acf[`stop_${n}_image`],
-  }))
-  .filter((stop) => stop.title);
+const stops = tour.stops ?? [];
 
-const otherTours = await getOtherTours(tour.slug);
+const otherTours = await getOtherTours(tour.slug.current);
 ---
 
-<BaseLayout title={`${title.rendered} — Seoul Walking Tours`}>
+<BaseLayout title={`${title} — Seoul Walking Tours`}>
   <div class="bg-natural-light">
     <!-- Hero img -->
     <div class="relative h-116 overflow-hidden">
       <img
         class="object-cover w-full h-full object-[50%_70%]"
-        src={acf.hero_image || "/assets/images/marketWideShot.jpg"}
+        src={tour.heroImage.url || "/assets/images/marketWideShot.jpg"}
         alt="Market female vendor"
       />
       <h1
         class="absolute inset-0 flex items-center justify-center text-5xl lg:text-7xl text-white"
       >
-        {title.rendered}
+        {title}
       </h1>
     </div>
 
@@ -59,7 +45,7 @@ const otherTours = await getOtherTours(tour.slug);
     >
       <PracticalInfo
         className="md:rounded-2xl lg:hidden bg-white p-5"
-        info={acf}
+        info={tour.practicalInfo}
       />
 
       <div
@@ -75,13 +61,13 @@ const otherTours = await getOtherTours(tour.slug);
 
         <!-- Market tour description -->
         <div class="flex flex-col">
-          <h2 class="text-section font-semibold mb-4">{acf.intro_title}</h2>
+          <h2 class="text-section font-semibold mb-4">{tour.introTitle}</h2>
           <div class="flex h-9 justify-center shrink-0">
             <div class="h-0.5 bg-accent-orange-23 w-[40%]"></div>
           </div>
-          <h3 class="font-extrabold">{acf.intro_subtitle}</h3>
+          <h3 class="font-extrabold">{tour.introSubtitle}</h3>
           <br />
-          <p class="whitespace-pre-line">{acf.intro_content}</p>
+          <PortableText value={tour.introContent ?? []} />
         </div>
 
         <div class="flex flex-col gap-4">
@@ -113,8 +99,8 @@ const otherTours = await getOtherTours(tour.slug);
                     {stop.image && (
                       <img
                         class="rounded-2xl"
-                        src={stop.image}
-                        alt={stop.title}
+                        src={stop.image.url}
+                        alt={stop.image.alt}
                       />
                     )}
                   </div>
@@ -124,21 +110,21 @@ const otherTours = await getOtherTours(tour.slug);
           }
         </div>
       </div>
-      <PersonalNote note={acf.personal_note} class="md:rounded-2xl lg:hidden" />
+      <PersonalNote note={tour.personalNote} class="md:rounded-2xl lg:hidden" />
 
       <div class="lg:self-start flex-1 sticky top-17">
         <PracticalInfo
           className="md:rounded-2xl hidden lg:block bg-white mb-8 px-5 py-10"
-          info={acf}
+          info={tour.practicalInfo}
         />
         <TourBookingForm
-          tourSlug={tour.slug}
+          tourSlug={tour.slug.current}
           className="flex flex-col gap-10 md:rounded-2xl bg-white px-5 py-10"
           client:visible
           otherTours={otherTours}
         />
       </div>
     </div>
-    <PersonalNote note={acf.personal_note} class="hidden lg:block" />
+    <PersonalNote note={tour.personalNote} class="hidden lg:block" />
   </div>
 </BaseLayout>

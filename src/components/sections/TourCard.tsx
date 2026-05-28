@@ -1,12 +1,12 @@
-import { type Tour, TourTag } from "@/lib/api";
+import type { Tour } from "@/types/tour";
 
-const tagColors: Record<TourTag, string> = {
-  [TourTag.popular]: "rgba(191, 231, 255)",
-  [TourTag.scenery]: "#46718C",
-  [TourTag.food]: "#335266",
-  [TourTag.culture]: "#8C6646",
-  [TourTag.history]: "#4a8a8a",
-  [TourTag.none]: "",
+const tagColors: Record<string, string> = {
+  popular: "rgba(191, 231, 255)",
+  scenery: "#46718C",
+  food: "#335266",
+  culture: "#8C6646",
+  history: "#4a8a8a",
+  none: "",
 };
 
 const TourCard = ({ tours = [] }: { tours: Tour[] }) => {
@@ -31,7 +31,7 @@ const TourCard = ({ tours = [] }: { tours: Tour[] }) => {
             <div className="flex overflow-x-auto gap-6">
               {tours.map((tour) => (
                 <div
-                  key={tour.slug}
+                  key={tour.slug.current}
                   className="flex shrink-0 w-81 flex-col rounded-4xl bg-white overflow-hidden border-[0.5px] border-gray-400 my-4"
                 >
                   <div className="relative">
@@ -39,27 +39,27 @@ const TourCard = ({ tours = [] }: { tours: Tour[] }) => {
                       loading="lazy"
                       className="aspect-3/2 object-cover"
                       src={
-                        tour.acf.hero_image || "/assets/images/marketLady.jpg"
+                        tour.heroImage.url || "/assets/images/marketLady.jpg"
                       }
-                      alt={tour.acf.card_describtion}
+                      alt={tour.heroImage.alt}
                     />
-                    {tour.acf.tag && tour.acf.tag !== "none" && (
+                    {tour.tags?.[0] && (
                       <div
                         className="absolute top-6 -left-10 text-medium-chromatic-teal py-2 text-[15px] px-14 font-medium -rotate-45"
-                        style={{ background: tagColors[tour.acf.tag] }}
+                        style={{ background: tagColors[tour.tags![0]] }}
                       >
-                        {tour.acf.tag.charAt(0).toUpperCase() +
-                          tour.acf.tag.slice(1)}
+                        {tour.tags![0].charAt(0).toUpperCase() +
+                          tour.tags![0].slice(1)}
                       </div>
                     )}
                   </div>
                   <div className="p-5 flex-1 flex flex-col gap-6">
                     <div>
                       <h3 className="text-subsection font-semibold mb-2">
-                        {tour.title.rendered}
+                        {tour.title}
                       </h3>
                       <p className="text-[15px]/6 font-normal text-[#555555]">
-                        {tour.acf.card_description}
+                        {tour.cardDescription}
                       </p>
                     </div>
 
@@ -68,13 +68,13 @@ const TourCard = ({ tours = [] }: { tours: Tour[] }) => {
                         Why i like this walk:
                       </h4>
                       <p className="italic text-medium-chromatic-teal text-sm">
-                        {tour.acf.why_i_like_this_tour}
+                        {tour.whyILike}
                       </p>
                     </div>
 
                     <div className="flex justify-center rounded-full border-accent-orange-23 border py-3.5 px-6 mb-3 group cursor-pointer hover:bg-accent-orange-23  transition-colors">
                       <a
-                        href={`/tours/${tour.slug}`}
+                        href={`/tours/${tour.slug.current}`}
                         className="font-medium text-medium-chromatic-teal group-hover:text-natural-light self-end transition-colors"
                       >
                         Explore this tour

@@ -9,11 +9,11 @@ import { Separator } from "../ui/separator";
 // ];
 
 interface TourInfo {
-  duration: string;
-  walking_level: string;
-  meeting_point: string;
-  start_time: string;
-  best_timing: string;
+  duration?: string;
+  walkingLevel?: string;
+  meetingPoint?: string;
+  startTime?: string;
+  bestTiming?: string;
 }
 
 const PracticalInfo = ({
@@ -21,14 +21,16 @@ const PracticalInfo = ({
   info,
 }: {
   className?: string;
-  info: TourInfo;
+  info: TourInfo | undefined;
 }) => {
+  if (!info) return null;
+
   const tourInfo = [
     { label: "Duration", value: info.duration },
-    { label: "Walking level", value: info.walking_level },
-    { label: "Meeting point", value: info.meeting_point },
-    { label: "Start time", value: info.start_time },
-    { label: "Best timing", value: info.best_timing },
+    { label: "Walking level", value: info.walkingLevel },
+    { label: "Meeting point", value: info.meetingPoint },
+    { label: "Start time", value: info.startTime },
+    { label: "Best timing", value: info.bestTiming },
   ];
 
   return (
