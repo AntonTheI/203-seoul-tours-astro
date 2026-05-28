@@ -2,22 +2,22 @@ const services = [
   {
     name: "Questions & preparation",
     description: "Ask anything — before you arrive, while planning",
-    icon: "/assets/images/msg.svg",
+    icon: "/assets/msg.svg",
   },
   {
     name: "Planning & advice",
     description: "Itineraries, priorities, what to do — and what to skip",
-    icon: "/assets/images/map.svg",
+    icon: "/assets/map.svg",
   },
   {
     name: "Reservations & bookings",
     description: "Restaurants, tickets, and hard-to-book experiences",
-    icon: "/assets/images/ticket.svg",
+    icon: "/assets/ticket.svg",
   },
   {
     name: "Transport & logistics",
     description: "Trains, buses — getting around Korea",
-    icon: "/assets/images/train.svg",
+    icon: "/assets/train.svg",
   },
 ];
 

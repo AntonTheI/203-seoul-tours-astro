@@ -2,17 +2,17 @@ const services = [
   {
     name: "Personalised experience",
     description: "Built around your curiosity",
-    icon: "/assets/images/target.svg",
+    icon: "/assets/target.svg",
   },
   {
     name: "Flexible in time and pace",
     description: "From a few hours to several days",
-    icon: "/assets/images/lucide_clock.svg",
+    icon: "/assets/lucide_clock.svg",
   },
   {
     name: "Theme- and location-driven",
     description: "Neighborhoods, themes, stories",
-    icon: "/assets/images/mountain.svg",
+    icon: "/assets/mountain.svg",
   },
 ];
 

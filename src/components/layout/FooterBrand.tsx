@@ -1,16 +1,16 @@
 const mediaLinks = [
-  { logoName: "instagram", logo: "/assets/images/instagram.svg" },
-  { logoName: "spotify", logo: "/assets/images/spotify.svg" },
-  { logoName: "linkedin", logo: "/assets/images/linkedin.svg" },
-  { logoName: "facebook", logo: "/assets/images/facebook.svg" },
-  { logoName: "linktree", logo: "/assets/images/linktree.svg" },
+  { logoName: "instagram", logo: "/assets/instagram.svg" },
+  { logoName: "spotify", logo: "/assets/spotify.svg" },
+  { logoName: "linkedin", logo: "/assets/linkedin.svg" },
+  { logoName: "facebook", logo: "/assets/facebook.svg" },
+  { logoName: "linktree", logo: "/assets/linktree.svg" },
 ];
 
 const FooterBrand = () => {
   return (
     <div className="flex flex-col lg:flex-1">
       <img
-        src="/assets/images/logo wide.svg"
+        src="/assets/logo wide.svg"
         alt="wide logo"
         className="flex justify-center h-15 w-auto lg:h-23"
       />
