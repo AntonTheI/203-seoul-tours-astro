@@ -51,13 +51,15 @@ const otherTours = await getOtherTours(tour.slug.current);
       <div
         class="flex flex-col flex-2 gap-8 bg-white md:rounded-3xl px-5 py-10"
       >
-        <div class="">
-          <img
-            src="/assets/images/marketLady.jpg"
-            alt="market lady"
-            class="object-cover w-full h-full max-w-165 max-h-110"
-          />
-        </div>
+        {tour.introImage && (
+          <div>
+            <img
+              src={tour.introImage.url}
+              alt={tour.introImage.alt}
+              class="object-cover w-full h-full max-w-165 max-h-110"
+            />
+          </div>
+        )}
 
         <!-- Market tour description -->
         <div class="flex flex-col">

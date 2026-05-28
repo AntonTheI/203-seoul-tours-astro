@@ -26,12 +26,17 @@ export const tour = defineType({
       group: 'basics',
       validation: (rule) => rule.required(),
     }),
+    // slug
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      options: {source: 'title'},
+      description:
+        "URL segment, auto-generated from the title. Controls the page URL (e.g.'/workshops/3-day-seoul-workshop'). Avoid changing after publishing — old links will break.",
       group: 'basics',
+      options: {
+        source: 'title',
+      },
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -87,6 +92,18 @@ export const tour = defineType({
       group: 'hero',
     }),
 
+    // Intro image
+    defineField({
+      name: 'introImage',
+      title: 'Intro Image',
+      type: 'image',
+      group: 'hero',
+      options: {hotspot: true},
+      fields: [
+        defineField({name: 'alt', title: 'Alt', type: 'string'}),
+      ],
+    }),
+
     // Intro content
     defineField({
       name: 'introContent',
@@ -103,11 +120,11 @@ export const tour = defineType({
       type: 'object',
       group: 'practicalInfo',
       fields: [
-        defineField({ name: 'duration', title: 'Duration', type: 'string' }),
-        defineField({ name: 'walkingLevel', title: 'Walking Level', type: 'string' }),
-        defineField({ name: 'meetingPoint', title: 'Meeting Point', type: 'string' }),
-        defineField({ name: 'startTime', title: 'Start Time', type: 'string' }),
-        defineField({ name: 'bestTiming', title: 'Best Timing', type: 'string' }),
+        defineField({name: 'duration', title: 'Duration', type: 'string'}),
+        defineField({name: 'walkingLevel', title: 'Walking Level', type: 'string'}),
+        defineField({name: 'meetingPoint', title: 'Meeting Point', type: 'string'}),
+        defineField({name: 'startTime', title: 'Start Time', type: 'string'}),
+        defineField({name: 'bestTiming', title: 'Best Timing', type: 'string'}),
       ],
     }),
 

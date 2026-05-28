@@ -26,6 +26,15 @@ export async function getAllTours(): Promise<Tour[]> {
       url: urlFor(tour.heroImage, 1800),
       alt: tour.heroImage?.alt,
     },
+    introImage: tour.introImage
+      ? { url: urlFor(tour.introImage, 1200), alt: tour.introImage?.alt }
+      : undefined,
+    stops: tour.stops?.map((stop: any) => ({
+      ...stop,
+      image: stop.image
+        ? { url: urlFor(stop.image, 1200), alt: stop.image.alt }
+        : undefined,
+    })),
   }));
 }
 
