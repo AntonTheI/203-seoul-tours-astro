@@ -17,7 +17,6 @@ export interface Tour {
   tags?: string[];
   heroImage: { url: string; alt: string };
   introTitle?: string;
-  introSubtitle?: string;
   introImage?: { url: string; alt: string };
   introContent?: any[];
   practicalInfo?: {

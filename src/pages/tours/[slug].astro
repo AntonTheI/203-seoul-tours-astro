@@ -67,8 +67,6 @@ const otherTours = await getOtherTours(tour.slug.current);
           <div class="flex h-9 justify-center shrink-0">
             <div class="h-0.5 bg-accent-orange-23 w-[40%]"></div>
           </div>
-          <h3 class="font-extrabold">{tour.introSubtitle}</h3>
-          <br />
           <PortableText value={tour.introContent ?? []} />
         </div>
 

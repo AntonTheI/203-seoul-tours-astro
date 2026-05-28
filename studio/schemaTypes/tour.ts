@@ -84,14 +84,6 @@ export const tour = defineType({
       group: 'hero',
     }),
 
-    //Intro subtitle
-    defineField({
-      name: 'introSubtitle',
-      title: 'Intro Subtitle',
-      type: 'string',
-      group: 'hero',
-    }),
-
     // Intro image
     defineField({
       name: 'introImage',
