@@ -1,7 +1,16 @@
 import type { EventContext } from "@cloudflare/workers-types";
 
 export async function onRequestPost(context: EventContext<any, any, any>) {
-  const body = await context.request.json();
+  const body = (await context.request.json()) as {
+    name?: string;
+    email: string;
+    tourSlug: string;
+    dateFrom?: string;
+    dateTo?: string;
+    groupSize?: string;
+    extensions?: string[];
+    comment?: string;
+  };
   const apiKey = context.env.RESEND_API_KEY;
 
   try {
@@ -14,8 +23,19 @@ export async function onRequestPost(context: EventContext<any, any, any>) {
       body: JSON.stringify({
         from: "onboarding@resend.dev",
         to: "anton333mai@gmail.com",
-        subject: "Test booking",
-        html: "<p>Test</p>",
+        subject: `New booking request — ${body.tourSlug}`,
+        html: `
+    <h2>New Booking Request</h2>
+    <p><strong>Name:</strong> ${body.name || "Not provided"}</p>
+    <p><strong>Email:</strong> ${body.email}</p>
+    <p><strong>Tour:</strong> ${body.tourSlug}</p>
+    <p><strong>Date from:</strong> ${body.dateFrom || "Not provided"}</p>
+    <p><strong>Date to:</strong> ${body.dateTo || "Not provided"}</p>
+    <p><strong>Group size:</strong> ${body.groupSize || "Not provided"}</p>
+    <p><strong>Add-on tours:</strong> ${body.extensions?.join(", ") || "None"}</p>
+    <p><strong>Comments:</strong> ${body.comment || "None"}</p>
+  `,
+        reply_to: body.email,
       }),
     });
 
