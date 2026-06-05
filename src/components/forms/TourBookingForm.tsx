@@ -25,12 +25,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../ui/dialog";
-import { type Tour } from "@/lib/api";
+import type { Tour } from "@/types/tour";
 
 import { useState, useEffect } from "react";
 
-const WP_API_REQUEST =
-  "http://localhost/tour-guide-site/?rest_route=/tours/v1/booking";
+const API_REQUEST = "/api/booking";
 
 interface TourOption {
   value: string;
@@ -73,8 +72,8 @@ export function TourBookingForm({
   const [errorMessage, setErrorMessage] = useState("");
 
   const tourExtensions: TourOption[] = otherTours.map((tour) => ({
-    value: tour.slug,
-    label: tour.title.rendered,
+    value: tour.slug.current,
+    label: tour.title,
   }));
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -101,7 +100,7 @@ export function TourBookingForm({
 
     setStatus("loading");
     try {
-      const request = await fetch(WP_API_REQUEST, {
+      const request = await fetch(API_REQUEST, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -116,10 +115,9 @@ export function TourBookingForm({
           date: undefined,
         }),
       });
-      const response = await request.json();
 
       if (!request.ok) {
-        throw new Error(response.message || "Something went wrong.");
+        throw new Error(errorMessage || "Something went wrong.");
       }
 
       setStatus("success");
