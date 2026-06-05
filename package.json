@@ -9,7 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^5.0.5",
+    "@astrojs/react": "^5.0.7",
     "@fontsource/mulish": "^5.2.8",
     "@hookform/resolvers": "^5.2.2",
     "@sanity/client": "^7.22.0",
@@ -17,7 +17,7 @@
     "@tailwindcss/vite": "^4.2.1",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "astro": "^6.3.5",
+    "astro": "^6.4.4",
     "astro-portabletext": "^0.13.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

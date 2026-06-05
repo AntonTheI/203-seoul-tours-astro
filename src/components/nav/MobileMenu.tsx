@@ -4,7 +4,7 @@ import Logo from "./Logo";
 import Links from "./Links";
 import { XIcon } from "lucide-react";
 import FooterBrand from "../layout/FooterBrand";
-import type { Tour } from "@/lib/api";
+import type { Tour } from "@/types/tour";
 
 interface Props {
   currentPath?: string;

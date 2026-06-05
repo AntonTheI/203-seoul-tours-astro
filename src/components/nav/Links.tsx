@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import type { Tour } from "@/lib/api";
+import type { Tour } from "@/types/tour";
 interface Props {
   className?: string;
   currentPath?: string;
@@ -28,8 +28,8 @@ const Links = ({
     {
       label: "Tours",
       tours: tours.map((tour) => ({
-        href: `/tours/${tour.slug}`,
-        label: tour.title.rendered,
+        href: `/tours/${tour.slug.current}`,
+        label: tour.title,
       })),
     },
     { href: "/tailored-walks", label: "Tailored walks" },
@@ -40,7 +40,7 @@ const Links = ({
       {navItems.map((item) => (
         <li key={item.label}>
           {item.label === "Tours" && item.tours ? (
-            <li
+            <div
               onMouseEnter={() => setToursOpen(true)}
               onMouseLeave={() => setToursOpen(false)}
               className="relative"
@@ -62,7 +62,7 @@ const Links = ({
                   ))}
                 </ul>
               )}
-            </li>
+            </div>
           ) : (
             <a href={item.href} className={linkProps}>
               {item.label}

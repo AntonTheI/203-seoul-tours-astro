@@ -3,7 +3,7 @@ import Logo from "../nav/Logo";
 import Book from "../nav/Book";
 import MobileMenu from "../nav/MobileMenu";
 import { useEffect, useState } from "react";
-import type { Tour } from "@/lib/api";
+import type { Tour } from "@/types/tour";
 
 interface Props {
   currentPath?: string;
