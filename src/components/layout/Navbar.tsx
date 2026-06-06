@@ -33,17 +33,17 @@ const Navbar = ({ currentPath = "", tours = [] }: Props) => {
           <Book />
         </div>
 
-        <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center">
+        <div className="hidden lg:flex lg:justify-between items-center">
           <Logo />
           <Links
             className="hidden md:flex justify-between gap-8 "
             currentPath={currentPath}
-            linkProps="text-medium-chromatic-teal hover:text-accent-orange-23"
+            linkProps="text-medium-chromatic-teal hover:text-accent-orange-23 flex"
             tours={tours}
           />
-          <div className="flex justify-end">
+          {/* <div className="flex justify-end">
             <Book />
-          </div>
+          </div> */}
         </div>
       </div>
     </nav>

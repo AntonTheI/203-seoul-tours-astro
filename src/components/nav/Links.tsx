@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import type { Tour } from "@/types/tour";
+
 interface Props {
   className?: string;
   currentPath?: string;
@@ -22,9 +23,6 @@ const Links = ({
   const [toursOpen, setToursOpen] = useState(false);
 
   const navItems: NavItem[] = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/concierge", label: "Concierge" },
     {
       label: "Tours",
       tours: tours.map((tour) => ({
@@ -32,7 +30,11 @@ const Links = ({
         label: tour.title,
       })),
     },
-    { href: "/tailored-walks", label: "Tailored walks" },
+    { href: "/about", label: "About" },
+    { href: "/faq", label: "FAQ" },
+    // { href: "/concierge", label: "Concierge" },
+
+    // { href: "/tailored-walks", label: "Tailored walks" },
   ];
 
   return (
@@ -52,10 +54,13 @@ const Links = ({
                 {item.label}
               </button>
               {toursOpen && (
-                <ul className="absolute p-2 -left-2 -bottom-34 bg-natural-light/80 backdrop-blur-xs">
+                <ul className="absolute p-2 -left-2 -bottom-15 bg-natural-light/80 backdrop-blur-xs py-5">
                   {item.tours.map((tour) => (
                     <li key={tour.href}>
-                      <a className={` ${linkProps}`} href={tour.href}>
+                      <a
+                        className={`w-full whitespace-nowrap ${linkProps}`}
+                        href={tour.href}
+                      >
                         {tour.label}
                       </a>
                     </li>
