@@ -12,6 +12,7 @@ interface NavItem {
   href?: string;
   label: string;
   tours?: Array<{ href: string; label: string }>;
+  tailoredMade?: { href: string; label: string };
 }
 
 const Links = ({
@@ -29,12 +30,11 @@ const Links = ({
         href: `/tours/${tour.slug.current}`,
         label: tour.title,
       })),
+      tailoredMade: { href: "/tailored-walks", label: "Tailored made" },
     },
     { href: "/about", label: "About" },
     { href: "/faq", label: "FAQ" },
     // { href: "/concierge", label: "Concierge" },
-
-    // { href: "/tailored-walks", label: "Tailored walks" },
   ];
 
   return (
@@ -54,7 +54,7 @@ const Links = ({
                 {item.label}
               </button>
               {toursOpen && (
-                <ul className="absolute p-2 -left-2 -bottom-15 bg-natural-light/80 backdrop-blur-xs py-5">
+                <ul className="absolute p-2 -left-2 bg-natural-light/80 backdrop-blur-xs py-5">
                   {item.tours.map((tour) => (
                     <li key={tour.href}>
                       <a
@@ -62,6 +62,15 @@ const Links = ({
                         href={tour.href}
                       >
                         {tour.label}
+                      </a>
+                      <div className="p-3">
+                        <hr />
+                      </div>
+                      <a
+                        href={item.tailoredMade?.href}
+                        className="text-medium-chromatic-teal hover:text-accent-orange-23"
+                      >
+                        {item.tailoredMade?.label}
                       </a>
                     </li>
                   ))}
