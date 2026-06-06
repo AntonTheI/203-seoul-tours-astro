@@ -63,17 +63,19 @@ const Links = ({
                       >
                         {tour.label}
                       </a>
-                      <div className="p-3">
-                        <hr />
-                      </div>
-                      <a
-                        href={item.tailoredMade?.href}
-                        className="text-medium-chromatic-teal hover:text-accent-orange-23"
-                      >
-                        {item.tailoredMade?.label}
-                      </a>
                     </li>
                   ))}
+                  <div className="p-3">
+                    <hr />
+                  </div>
+                  <li>
+                    <a
+                      href={item.tailoredMade?.href}
+                      className="text-medium-chromatic-teal hover:text-accent-orange-23"
+                    >
+                      {item.tailoredMade?.label}
+                    </a>
+                  </li>
                 </ul>
               )}
             </div>
