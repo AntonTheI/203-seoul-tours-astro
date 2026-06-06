@@ -67,6 +67,7 @@ const MobileMenu = ({ currentPath = "", tours = [] }: Props) => {
                 className="flex flex-col gap-4 text-2xl font-semibold p-5 text-medium-chromatic-teal"
                 currentPath={currentPath}
                 tours={tours}
+                mobile
               />
               <div className="bg-dark-chromatic-teal py-10">
                 <FooterBrand />

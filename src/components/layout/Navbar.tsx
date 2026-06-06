@@ -38,7 +38,7 @@ const Navbar = ({ currentPath = "", tours = [] }: Props) => {
           <Links
             className="hidden md:flex justify-between gap-8 "
             currentPath={currentPath}
-            linkProps="text-medium-chromatic-teal hover:text-accent-orange-23 flex"
+            linkProps="text-medium-chromatic-teal hover:text-accent-orange-23 flex "
             tours={tours}
           />
           {/* <div className="flex justify-end">

@@ -1,0 +1,35 @@
+---
+import type { NavItem } from "../nav/navItems";
+
+interface Props {
+  navItems: NavItem[];
+}
+
+const { navItems } = Astro.props;
+---
+
+<div class="flex justify-between lg:flex-1">
+  <div class="mt-6">
+    <h4 class="text-accent-orange-23 text-sm mb-4">EXPLORE</h4>
+    <nav class="flex flex-col gap-2">
+      {navItems.map((item) => (
+        item.href
+          ? <a href={item.href} class="hover:text-accent-orange-23">{item.label}</a>
+          : <>
+              {item.tours?.map((tour) => (
+                <a href={tour.href} class="hover:text-accent-orange-23">{tour.label}</a>
+              ))}
+              {item.tailoredMade && (
+                <a href={item.tailoredMade.href} class="hover:text-accent-orange-23">{item.tailoredMade.label}</a>
+              )}
+            </>
+      ))}
+    </nav>
+  </div>
+  <div class="mt-6">
+    <h4 class="text-accent-orange-23 text-sm mb-4">GET IN TOUCH</h4>
+    <a href="mailto:contact@jitsejager.com" class="underline hover:text-accent-orange-23">
+      contact@jitsejager.com
+    </a>
+  </div>
+</div>

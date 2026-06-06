@@ -1,0 +1,18 @@
+---
+import FooterMain from "./FooterMain.astro";
+import FooterLegal from "./FooterLegal.astro";
+import { getNavItems } from "../nav/navItems";
+import type { Tour } from "@/types/tour";
+
+interface Props {
+  tours?: Tour[];
+}
+
+const { tours = [] } = Astro.props;
+const navItems = getNavItems(tours);
+---
+
+<footer class="text-dark-atmospheric-teal">
+  <FooterMain navItems={navItems} />
+  <FooterLegal />
+</footer>

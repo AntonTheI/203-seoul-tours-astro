@@ -1,0 +1,22 @@
+---
+import FooterBrand from "./FooterBrand";
+import FooterNav from "./FooterNav.astro";
+import type { NavItem } from "../nav/navItems";
+
+interface Props {
+  navItems: NavItem[];
+}
+
+const { navItems } = Astro.props;
+---
+
+<div class="bg-dark-chromatic-teal">
+  <div class="max-w-7xl mx-auto flex flex-col py-6 px-5 lg:flex-row md:px-22 md:py-10 lg:py-14 lg:px-32 lg:justify-between">
+    <FooterBrand />
+    <div class="lg:flex-1 lg:flex lg:justify-center">
+      <hr />
+      <div class="w-[0.5px] bg-dark-atmospheric-teal"></div>
+    </div>
+    <FooterNav navItems={navItems} />
+  </div>
+</div>
