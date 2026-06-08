@@ -75,7 +75,7 @@ const TourCard = ({ tours = [] }: { tours: Tour[] }) => {
                           </p>
                         </div>
 
-                        <div className="flex justify-center rounded-full border-accent-orange-23 border py-3.5 px-6 mb-3 group cursor-pointer hover:bg-accent-orange-23  transition-colors">
+                        <div className="flex justify-center rounded-full border-accent-orange-23 border py-4 px-6 mb-3 group cursor-pointer hover:bg-accent-orange-23  transition-colors">
                           <a
                             href={`/tours/${tour.slug.current}`}
                             className="font-medium text-medium-chromatic-teal group-hover:text-natural-light self-end transition-colors"

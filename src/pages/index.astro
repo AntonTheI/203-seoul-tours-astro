@@ -8,6 +8,7 @@ import TailoredWalks from "../components/sections/TailoredWalks.tsx";
 import TravelAssistant from "../components/sections/TravelAssistant.tsx";
 import Testimonials from "../components/sections/Testimonials.tsx";
 import SocialMediaGrid from "../components/sections/SocialMediaGrid.tsx";
+import Substack from "@/components/sections/Substack.astro";
 import { getAllTours } from "@/lib/api";
 
 const tours = await getAllTours();
@@ -22,4 +23,5 @@ const tours = await getAllTours();
   <TravelAssistant />
   <Testimonials />
   <SocialMediaGrid />
+  <Substack />
 </BaseLayout>

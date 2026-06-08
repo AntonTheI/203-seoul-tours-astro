@@ -36,7 +36,7 @@ const TailoredWalks = () => {
               </p>
               <a
                 href="/tailored-walks"
-                className="flex justify-center w-full bg-accent-orange-23 px-14 py-3.5 rounded-full text-natural-light font-semibold"
+                className="flex justify-center w-full bg-accent-orange-23 px-14 py-4 rounded-full text-natural-light font-semibold"
               >
                 Let's design a walk
               </a>

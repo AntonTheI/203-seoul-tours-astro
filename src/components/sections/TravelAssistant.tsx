@@ -62,7 +62,7 @@ const TravelAssistant = () => {
         <div className="flex justify-center self-center mt-6 w-full lg:w-md">
           <a
             href="/concierge"
-            className="flex justify-center w-full bg-accent-orange-23 px-14 py-3.5 rounded-full text-natural-light font-semibold"
+            className="flex justify-center w-full bg-accent-orange-23 px-14 py-4 rounded-full text-natural-light font-semibold"
           >
             Walk me through your plans
           </a>
