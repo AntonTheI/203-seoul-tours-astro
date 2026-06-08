@@ -59,13 +59,13 @@ const TravelAssistant = () => {
             ))}
           </div>
         </div>
-        <div className="flex flex-col justify-between gap-4 mt-6 md:flex-row lg:flex-row">
-          <button className="flex-1 text-dark-chromatic-teal font-semibold rounded-full border border-medium-chromatic-teal p-3.5  lg:p-4 ">
-            Learn more
-          </button>
-          <button className="flex-1 text-dark-chromatic-teal font-semibold rounded-full bg-accent-orange-23 p-3.5  lg:p-4 ">
+        <div className="flex justify-center self-center mt-6 w-full lg:w-md">
+          <a
+            href="/concierge"
+            className="flex justify-center w-full bg-accent-orange-23 px-14 py-3.5 rounded-full text-natural-light font-semibold"
+          >
             Walk me through your plans
-          </button>
+          </a>
         </div>
       </div>
     </div>
