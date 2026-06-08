@@ -35,7 +35,7 @@ const TailoredWalks = () => {
                 fits you.
               </p>
               <a
-                href="/custom-tours"
+                href="/tailored-walks"
                 className="flex justify-center w-full bg-accent-orange-23 px-14 py-3.5 rounded-full text-natural-light font-semibold"
               >
                 Let's design a walk
