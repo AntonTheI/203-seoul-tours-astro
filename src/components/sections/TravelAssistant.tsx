@@ -28,7 +28,7 @@ const TravelAssistant = () => {
         <h4 className="accent-label lg:text-center">KOREA TRAVEL ASSISTANT</h4>
 
         <div className="flex flex-col gap-10 lg:items-center">
-          <div className="flex flex-col gap-4 flex-1">
+          <div className="reveal flex flex-col gap-4 flex-1">
             <h2 className="text-section font-semibold leading-none">
               Planning a trip to Korea and need help?
             </h2>
@@ -38,7 +38,7 @@ const TravelAssistant = () => {
             </p>
           </div>
 
-          <div className="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-row gap-3  w-full flex-1">
+          <div className="reveal flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-row gap-3  w-full flex-1">
             {services.map((service) => (
               <div
                 key={service.name}

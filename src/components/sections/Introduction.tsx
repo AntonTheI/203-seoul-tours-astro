@@ -9,7 +9,7 @@ const Introduction = () => {
         src="/assets/images/jitseProfilePic.jpg"
         alt="picture of Jitse"
       /> */}
-        <div className="space-y-3">
+        <div className="reveal space-y-3">
           <p className="accent-label">YOUR GUIDE</p>
           <h2 className="text-section font-semibold">Walk with me for a bit</h2>
           <p>

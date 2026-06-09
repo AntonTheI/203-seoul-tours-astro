@@ -83,7 +83,7 @@ const otherTours = await getOtherTours(tour.slug.current);
               <div class="flex gap-4 flex-col">
                 <div class="flex gap-2 items-center">
                   <div
-                    class={`flex justify-center items-center text-xl font-bold rounded-full w-9 h-9 ${stop.icon === "!" ? "text-accent-orange-23 bg-medium-chromatic-teal" : stop.icon === "?" ? "bg-accent-orange-23 text-natural-light" : "text-natural-light bg-accent-orange-23"}`}
+                    class={`flex justify-center items-center text-xl font-bold rounded-full w-9 h-9 shrink-0 ${stop.icon === "!" ? "text-accent-orange-23 bg-medium-chromatic-teal" : stop.icon === "?" ? "bg-accent-orange-23 text-natural-light" : "text-natural-light bg-accent-orange-23"}`}
                   >
                     {stop.icon}
                   </div>

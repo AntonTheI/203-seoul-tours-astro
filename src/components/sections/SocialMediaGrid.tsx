@@ -2,7 +2,7 @@ const SocialMediaGrid = () => {
   return (
     <div className="bg-white">
       <div className="flex flex-col max-w-7xl mx-auto px-5 py-section-lg md:px-22 lg:px-32 gap-4 ">
-        <div>
+        <div className="reveal">
           <h4 className="accent-label">#SOCIAL MEDIA</h4>
           <h2 className="text-section font-semibold">Recent posts</h2>
           <div className="flex gap-1.5">
@@ -12,7 +12,7 @@ const SocialMediaGrid = () => {
           </div>
         </div>
 
-        <div className=" grid grid-cols-2 gap-0.5 auto-rows-[192px]  lg:grid-cols-4 lg:h-125 ">
+        <div className="reveal grid grid-cols-2 gap-0.5 auto-rows-[192px]  lg:grid-cols-4 lg:h-125 ">
           <img
             src="../assets/roof.jpg"
             alt="art"

@@ -26,7 +26,7 @@ const TailoredWalks = () => {
           </p>
           <div className="flex flex-col gap-6 lg:flex-row lg:gap-20">
             <div className="flex flex-1 flex-col w-full gap-4 lg:items-start lg:justify-between ">
-              <h2 className="text-section font-semibold leading-none lg:text-start text-natural-light">
+              <h2 className="reveal text-section font-semibold leading-none lg:text-start text-natural-light">
                 Looking for something more specific?
               </h2>
               <p className=" text-light-atmospheric-teal-70 lg:text-start">
@@ -42,7 +42,7 @@ const TailoredWalks = () => {
               </a>
             </div>
 
-            <div className="w-full  flex flex-col flex-1 gap-4 lg:justify-between">
+            <div className="reveal w-full  flex flex-col flex-1 gap-4 lg:justify-between">
               {services.map((service) => (
                 <div
                   key={service.name}
