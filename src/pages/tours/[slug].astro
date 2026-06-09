@@ -27,21 +27,23 @@ const otherTours = await getOtherTours(tour.slug.current);
 <BaseLayout title={`${title} — Seoul Walking Tours`}>
   <div class="bg-natural-light">
     <!-- Hero img -->
-    <div class="relative h-116 overflow-hidden">
+    <div class="h-116">
       <img
         class="object-cover w-full h-full object-[50%_70%]"
         src={tour.heroImage.url || "/assets/images/marketWideShot.jpg"}
         alt="Market female vendor"
       />
-      <h1
-        class="absolute inset-0 flex items-center justify-center text-5xl lg:text-7xl text-white"
-      >
-        {title}
-      </h1>
+    </div>
+
+    <div class="max-w-7xl mx-auto -my-18 z-10 relative md:px-22 lg:px-32">
+      <PracticalInfo
+        className="md:rounded-2xl hidden lg:block bg-white mb-8 px-5 py-6"
+        info={tour.practicalInfo}
+      />
     </div>
 
     <div
-      class="max-w-7xl mx-auto flex flex-col lg:flex-row md:px-22 lg:px-32 gap-5 py-section-lg"
+      class="max-w-7xl mx-auto flex flex-col lg:flex-row md:px-22 lg:px-32 gap-5 py-section-lg pt-[clamp(30px,5vw,64px)]"
     >
       <PracticalInfo
         className="md:rounded-2xl lg:hidden bg-white p-5"
@@ -51,15 +53,20 @@ const otherTours = await getOtherTours(tour.slug.current);
       <div
         class="flex flex-col flex-2 gap-8 bg-white md:rounded-3xl px-5 py-10"
       >
-        {tour.introImage && (
-          <div>
-            <img
-              src={tour.introImage.url}
-              alt={tour.introImage.alt}
-              class="object-cover w-full h-full max-w-165 max-h-110"
-            />
-          </div>
-        )}
+        <h1 class="flex text-5xl lg:text-section font-semibold text-black">
+          {title}
+        </h1>
+        {
+          tour.introImage && (
+            <div>
+              <img
+                src={tour.introImage.url}
+                alt={tour.introImage.alt}
+                class="object-cover w-full h-full max-w-165 max-h-110"
+              />
+            </div>
+          )
+        }
 
         <!-- Market tour description -->
         <div class="flex flex-col">
@@ -113,10 +120,6 @@ const otherTours = await getOtherTours(tour.slug.current);
       <PersonalNote note={tour.personalNote} class="md:rounded-2xl lg:hidden" />
 
       <div class="lg:self-start flex-1 sticky top-17">
-        <PracticalInfo
-          className="md:rounded-2xl hidden lg:block bg-white mb-8 px-5 py-10"
-          info={tour.practicalInfo}
-        />
         <TourBookingForm
           tourSlug={tour.slug.current}
           className="flex flex-col gap-10 md:rounded-2xl bg-white px-5 py-10"
