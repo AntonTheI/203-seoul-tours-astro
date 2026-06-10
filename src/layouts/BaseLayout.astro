@@ -7,15 +7,16 @@ import { getAllTours } from "@/lib/api";
 interface Props {
   title: string;
   description?: string;
+  lang?: string;
 }
 
-const { title, description = "Seoul Walking Tours" } = Astro.props;
+const { title, description = "Seoul Walking Tours", lang = "en" } = Astro.props;
 const currentPath = Astro.url.pathname;
 const tours = await getAllTours();
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

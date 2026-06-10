@@ -43,3 +43,19 @@ export async function getOtherTours(currentSlug: string): Promise<Tour[]> {
 
   return tours.filter((tour) => tour.slug.current !== currentSlug);
 }
+
+export async function getKlmPage() {
+  const page = await client.fetch(`*[_type == "klmPage"][0]`);
+  if (!page) return null;
+
+  return {
+    ...page,
+    magazinePhoto: page.magazinePhoto
+      ? {url: urlFor(page.magazinePhoto, 1200), alt: page.magazinePhoto?.alt}
+      : null,
+    groupPhotos: (page.groupPhotos ?? []).map((photo: any) => ({
+      url: urlFor(photo, 1200),
+      alt: photo?.alt,
+    })),
+  };
+}
