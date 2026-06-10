@@ -1,4 +1,4 @@
-import { Clock, Footprints, MapPin, AlarmClock, Lightbulb } from "lucide-react";
+import { Clock, SportShoe, MapPin, AlarmClock, Lightbulb } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 interface TourInfo {
@@ -20,7 +20,7 @@ const PracticalInfo = ({
 
   const tourInfo: { label: string; value?: string; icon: LucideIcon }[] = [
     { label: "Duration", value: info.duration, icon: Clock },
-    { label: "Walking level", value: info.walkingLevel, icon: Footprints },
+    { label: "Walking level", value: info.walkingLevel, icon: SportShoe },
     { label: "Meeting point", value: info.meetingPoint, icon: MapPin },
     { label: "Start time", value: info.startTime, icon: AlarmClock },
     { label: "Best timing", value: info.bestTiming, icon: Lightbulb },
@@ -35,9 +35,14 @@ const PracticalInfo = ({
               key={item.label}
               className="flex flex-row items-center gap-3 py-3 md:py-0 md:flex-col md:flex-1 md:w-0 md:gap-1 md:items-start text-sm min-w-0"
             >
-              <item.icon size={20} className="text-accent-orange-23 shrink-0 md:mb-1" />
+              <item.icon
+                size={20}
+                className="text-accent-orange-23 shrink-0 md:mb-1"
+              />
               <div className="flex flex-col min-w-0">
-                <span className="text-dark-chromatic-teal/70">{item.label}</span>
+                <span className="text-dark-chromatic-teal/70">
+                  {item.label}
+                </span>
                 <span>{item.value}</span>
               </div>
             </div>

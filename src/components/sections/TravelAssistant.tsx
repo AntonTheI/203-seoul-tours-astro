@@ -1,23 +1,26 @@
-const services = [
+import type { LucideIcon } from "lucide-react";
+import { MessageCircle, Map, Ticket, Train } from "lucide-react";
+
+const services: { name: string; description: string; icon: LucideIcon }[] = [
   {
     name: "Questions & preparation",
     description: "Ask anything — before you arrive, while planning",
-    icon: "/assets/msg.svg",
+    icon: MessageCircle,
   },
   {
     name: "Planning & advice",
     description: "Itineraries, priorities, what to do — and what to skip",
-    icon: "/assets/map.svg",
+    icon: Map,
   },
   {
     name: "Reservations & bookings",
     description: "Restaurants, tickets, and hard-to-book experiences",
-    icon: "/assets/ticket.svg",
+    icon: Ticket,
   },
   {
     name: "Transport & logistics",
     description: "Trains, buses — getting around Korea",
-    icon: "/assets/train.svg",
+    icon: Train,
   },
 ];
 
@@ -45,7 +48,7 @@ const TravelAssistant = () => {
                 className="bg-medium-chromatic-teal rounded-4xl p-4 lg:px-2 lg:p-5 flex lg:flex-col  gap-4 items-center lg:flex-1"
               >
                 <div className="rounded-full bg-[rgb(255,255,255,0.20)] w-14 h-14 flex p-2 justify-center items-center shrink-0">
-                  <img src={service.icon} alt={service.name} className="w-9" />
+                  <service.icon size={36} className="text-accent-orange-23" />
                 </div>
                 <div className="flex flex-col lg:justify-center lg:items-center ">
                   <div className="text-natural-light mb-2 text-[15px] lg:text-base">

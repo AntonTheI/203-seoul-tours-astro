@@ -1,18 +1,21 @@
-const services = [
+import type { LucideIcon } from "lucide-react";
+import { Target, Clock, Mountain } from "lucide-react";
+
+const services: { name: string; description: string; icon: LucideIcon }[] = [
   {
     name: "Personalised experience",
     description: "Built around your curiosity",
-    icon: "/assets/target.svg",
+    icon: Target,
   },
   {
     name: "Flexible in time and pace",
     description: "From a few hours to several days",
-    icon: "/assets/lucide_clock.svg",
+    icon: Clock,
   },
   {
     name: "Theme- and location-driven",
     description: "Neighborhoods, themes, stories",
-    icon: "/assets/mountain.svg",
+    icon: Mountain,
   },
 ];
 
@@ -49,11 +52,7 @@ const TailoredWalks = () => {
                   className="flex self-start bg-[rgb(255,255,255,0.15)] w-full p-4 md:p-5 lg:p-5 rounded-3xl gap-4"
                 >
                   <div className="p-2 bg-[rgb(255,255,255,0.20)] rounded-2xl w-14 h-14 flex justify-center items-center">
-                    <img
-                      src={service.icon}
-                      alt={service.name}
-                      className="w-9"
-                    />
+                    <service.icon size={36} className="text-accent-orange-23" />
                   </div>
                   <div className="flex flex-col justify-between items-baseline py-1">
                     <p className="text-natural-light">{service.name}</p>
