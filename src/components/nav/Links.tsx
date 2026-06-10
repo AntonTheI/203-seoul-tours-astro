@@ -38,7 +38,9 @@ const Links = ({
                 {item.label}
               </button>
               {toursOpen && (
-                <ul className={`py-2 -left-2 pl-6 ${mobile ? "relative" : "absolute bg-natural-light/80 backdrop-blur-xs py-5"}`}>
+                <ul
+                  className={`py-2 -left-6 px-6 ${mobile ? "relative" : "absolute bg-natural-light backdrop-blur-xs py-5 shadow"}`}
+                >
                   {item.tours.map((tour) => (
                     <li key={tour.href}>
                       <a
