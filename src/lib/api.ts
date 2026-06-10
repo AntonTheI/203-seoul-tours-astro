@@ -18,7 +18,7 @@ export function urlFor(source: any, width?: number) {
 }
 
 export async function getAllTours(): Promise<Tour[]> {
-  const tours = await client.fetch(`*[_type=="tour"]`);
+  const tours = await client.fetch(`*[_type=="tour"] | order(title asc)`);
 
   return tours.map((tour: any) => ({
     ...tour,
