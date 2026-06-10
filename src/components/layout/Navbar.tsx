@@ -29,8 +29,8 @@ const Navbar = ({ currentPath = "", tours = [] }: Props) => {
     >
       <div className="max-w-7xl mx-auto px-5 md:px-22 lg:px-32  ">
         <div className="flex justify-between items-center lg:hidden">
+          <Logo />
           <MobileMenu currentPath={currentPath} tours={tours} />
-          <Book />
         </div>
 
         <div className="hidden lg:flex lg:justify-between items-center">

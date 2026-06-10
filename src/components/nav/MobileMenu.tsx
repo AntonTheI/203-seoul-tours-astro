@@ -5,6 +5,7 @@ import Links from "./Links";
 import { XIcon } from "lucide-react";
 import FooterBrand from "../layout/FooterBrand";
 import type { Tour } from "@/types/tour";
+import { Menu } from "lucide-react";
 
 interface Props {
   currentPath?: string;
@@ -43,20 +44,22 @@ const MobileMenu = ({ currentPath = "", tours = [] }: Props) => {
   }, [isOpen]);
 
   return (
-    <div className="">
+    <div className="flex">
       <button
         aria-label="Open menu"
         aria-expanded={isOpen}
         onClick={() => setIsOpen(true)}
       >
-        MobileMenu
+        <div>
+          <Menu size={30} />
+        </div>
       </button>
 
       {mounted &&
         isOpen &&
         createPortal(
           <nav className="flex flex-col fixed inset-0 h-full bg-white z-100 overflow-y-auto">
-            <div className="flex justify-between px-4 py-2">
+            <div className="flex justify-between px-5 py-2">
               <Logo />
               <button aria-label="Close menu" onClick={() => setIsOpen(false)}>
                 <XIcon />
