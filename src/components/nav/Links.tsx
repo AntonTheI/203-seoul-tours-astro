@@ -45,10 +45,10 @@ const Links = ({
               </button>
               {toursOpen && (
                 <ul
-                  className={`py-2 -left-6 px-6 ${mobile ? "relative" : "absolute bg-natural-light backdrop-blur-xs py-5 shadow"}`}
+                  className={`pt-2 -left-6 px-6  ${mobile ? "relative" : "absolute bg-natural-light backdrop-blur-xs py-5 shadow"}`}
                 >
                   {item.tours.map((tour) => (
-                    <li key={tour.href}>
+                    <li key={tour.href} className="max-lg:px-4 max-md:mb-1">
                       <a
                         className={`w-full whitespace-nowrap ${linkProps}`}
                         href={tour.href}
