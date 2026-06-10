@@ -15,7 +15,6 @@ export const klmPage = defineType({
       title: 'Page title (h1)',
       type: 'string',
       group: 'intro',
-      description: 'e.g. "Hoi — wat leuk dat je (bijna) in Seoul bent!"',
     }),
     defineField({
       name: 'intro',
@@ -23,7 +22,6 @@ export const klmPage = defineType({
       type: 'array',
       of: [{type: 'block'}],
       group: 'intro',
-      description: 'Welkomstparagraaf',
     }),
     defineField({
       name: 'magazinePhoto',
@@ -31,9 +29,7 @@ export const klmPage = defineType({
       type: 'image',
       group: 'photos',
       options: {hotspot: true},
-      fields: [
-        defineField({name: 'alt', title: 'Alt text', type: 'string'}),
-      ],
+      fields: [defineField({name: 'alt', title: 'Alt text', type: 'string'})],
     }),
     defineField({
       name: 'groupPhotos',
@@ -44,9 +40,7 @@ export const klmPage = defineType({
         {
           type: 'image',
           options: {hotspot: true},
-          fields: [
-            defineField({name: 'alt', title: 'Alt text', type: 'string'}),
-          ],
+          fields: [defineField({name: 'alt', title: 'Alt text', type: 'string'})],
         },
       ],
     }),
@@ -64,14 +58,12 @@ export const klmPage = defineType({
       type: 'array',
       of: [{type: 'block'}],
       group: 'content',
-      description: 'KLM-crew prijzen',
     }),
     defineField({
       name: 'pricingNote',
       title: 'Pricing footnote',
       type: 'string',
       group: 'content',
-      description: 'e.g. "Prijzen zijn exclusief eten, drinken en vervoer. Maximum groepsgrootte: 8 personen."',
     }),
     defineField({
       name: 'faq',
@@ -79,7 +71,6 @@ export const klmPage = defineType({
       type: 'array',
       of: [{type: 'block'}],
       group: 'content',
-      description: 'Veelgestelde vragen',
     }),
     defineField({
       name: 'contactNote',
@@ -87,7 +78,6 @@ export const klmPage = defineType({
       type: 'array',
       of: [{type: 'block'}],
       group: 'content',
-      description: 'Slottekst + contactgegevens',
     }),
   ],
 })
