@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import type { Tour } from "@/types/tour";
 import { getNavItems } from "./navItems";
+import { CircleChevronDown } from "lucide-react";
 
 interface Props {
   className?: string;
@@ -33,9 +34,14 @@ const Links = ({
             >
               <button
                 onClick={() => setToursOpen(!toursOpen)}
-                className="cursor-pointer  hover:text-accent-orange-23 text-medium-chromatic-teal"
+                className="cursor-pointer flex justify-center items-center gap-1 hover:text-accent-orange-23 text-medium-chromatic-teal"
               >
                 {item.label}
+                <p
+                  className={`transition-transform duration-300 ease-out ${toursOpen ? "rotate-180" : ""}`}
+                >
+                  <CircleChevronDown size={12} />
+                </p>
               </button>
               {toursOpen && (
                 <ul
