@@ -66,16 +66,7 @@ const TourCard = ({ tours = [] }: { tours: Tour[] }) => {
                           </p>
                         </div>
 
-                        <div className="text-sm bg-natural-light border-accent-orange-23 p-3 border-l-3 mt-auto rounded-r-md">
-                          <h4 className="text-accent-orange-23 mb-2 text-[13px]">
-                            Why i like this walk:
-                          </h4>
-                          <p className="italic text-medium-chromatic-teal text-sm">
-                            {tour.whyILike}
-                          </p>
-                        </div>
-
-                        <div className="flex justify-center rounded-full border-accent-orange-23 border py-4 px-6 mb-3 group cursor-pointer hover:bg-accent-orange-23  transition-colors">
+                        <div className="flex justify-center rounded-full border-accent-orange-23 border py-4 px-6 mb-3 group cursor-pointer hover:bg-accent-orange-23  transition-colors mt-auto">
                           <a
                             href={`/tours/${tour.slug.current}`}
                             className="font-medium text-medium-chromatic-teal group-hover:text-natural-light self-end transition-colors"
