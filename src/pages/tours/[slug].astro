@@ -35,15 +35,8 @@ const otherTours = await getOtherTours(tour.slug.current);
       />
     </div>
 
-    <div class="max-w-7xl mx-auto -my-18 z-10 relative md:px-22 lg:px-32">
-      <PracticalInfo
-        className="md:rounded-2xl hidden lg:block bg-white mb-8 px-5 py-6"
-        info={tour.practicalInfo}
-      />
-    </div>
-
     <div
-      class="max-w-7xl mx-auto flex flex-col lg:flex-row md:px-22 lg:px-32 gap-5 py-section-lg pt-[clamp(30px,5vw,64px)]"
+      class="max-w-7xl mx-auto flex flex-col lg:flex-row md:px-22 lg:px-32 gap-5 py-section-lg"
     >
       <PracticalInfo
         className="md:rounded-2xl lg:hidden bg-white p-5"
@@ -120,6 +113,10 @@ const otherTours = await getOtherTours(tour.slug.current);
       <PersonalNote note={tour.personalNote} class="md:rounded-2xl lg:hidden" />
 
       <div class="lg:self-start flex-1 sticky top-17">
+        <PracticalInfo
+          className="md:rounded-2xl hidden lg:block bg-white mb-8 px-5 py-10"
+          info={tour.practicalInfo}
+        />
         <TourBookingForm
           tourSlug={tour.slug.current}
           className="flex flex-col gap-10 md:rounded-2xl bg-white px-5 py-10"
