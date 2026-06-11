@@ -15,7 +15,7 @@ try {
 <BaseLayout title="Voor KLM-crews — Seoul Walking Tours" lang="nl">
   <div class="bg-natural-light">
     <!-- Intro -->
-    <section class="py-section-lg">
+    <section class="py-section">
       <div class="max-w-7xl mx-auto px-5 md:px-22 lg:px-32">
         <div class="flex flex-col lg:flex-row gap-col-gap">
           <div class="flex-2/3">
@@ -46,73 +46,83 @@ try {
     </section>
 
     <!-- Routes -->
-    <section class="bg-white py-section-lg">
-      <div class="max-w-7xl mx-auto px-5 md:px-22 lg:px-32">
-        <h2 class="text-subsection font-semibold mb-8 text-dark-chromatic-teal">
-          Populaire routes
-        </h2>
-        {
-          page?.routes && (
-            <div class="space-y-4 leading-relaxed max-w-3xl">
-              <PortableText value={page.routes} />
-            </div>
-          )
-        }
+    <section class="bg-white py-section">
+      <div
+        class="max-w-7xl mx-auto px-5 md:px-22 lg:px-32 flex flex-col md:flex-row"
+      >
+        <div class="flex flex-col lg:flex-row gap-col-gap">
+          <div class="flex flex-col flex-2/3">
+            <h2
+              class="text-subsection font-semibold mb-8 text-dark-chromatic-teal"
+            >
+              Populaire routes
+            </h2>
+            {
+              page?.routes && (
+                <div class="space-y-4 leading-relaxed max-w-3xl">
+                  <PortableText value={page.routes} />
+                </div>
+              )
+            }
+          </div>
+
+          <!-- Pricing -->
+          <div class="flex flex-1/3 flex-col">
+            <h2 class="text-subsection font-semibold mb-8">Prijzen</h2>
+            {
+              page?.pricing && (
+                <div class="space-y-4 leading-relaxed max-w-3xl">
+                  <PortableText value={page.pricing} />
+                </div>
+              )
+            }
+            {
+              page?.pricingNote && (
+                <p class="mt-8 text-light-chromatic-teal text-sm">
+                  {page.pricingNote}
+                </p>
+              )
+            }
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Pricing -->
-    <section class="bg-dark-chromatic-teal text-natural-light py-section-lg">
+    <section class="bg-medium-chromatic-teal text-natural-light py-section">
       <div class="max-w-7xl mx-auto px-5 md:px-22 lg:px-32">
-        <h2 class="text-subsection font-semibold mb-8">Prijzen</h2>
-        {
-          page?.pricing && (
-            <div class="space-y-4 leading-relaxed max-w-3xl">
-              <PortableText value={page.pricing} />
-            </div>
-          )
-        }
-        {
-          page?.pricingNote && (
-            <p class="mt-8 text-natural-light/60 text-sm">{page.pricingNote}</p>
-          )
-        }
-      </div>
-    </section>
+        <div class="flex flex-col lg:flex-row gap-col-gap">
+          <!-- FAQ -->
+          <div>
+            <h2 class="text-subsection font-semibold mb-8">
+              Veelgestelde vragen
+            </h2>
+            {
+              page?.faq && (
+                <div class="space-y-4 leading-relaxed max-w-3xl">
+                  <PortableText value={page.faq} />
+                </div>
+              )
+            }
+          </div>
 
-    <!-- FAQ -->
-    <section class="py-section-lg">
-      <div class="max-w-7xl mx-auto px-5 md:px-22 lg:px-32">
-        <h2 class="text-subsection font-semibold mb-8 text-dark-chromatic-teal">
-          Veelgestelde vragen
-        </h2>
-        {
-          page?.faq && (
-            <div class="space-y-4 leading-relaxed max-w-3xl">
-              <PortableText value={page.faq} />
-            </div>
-          )
-        }
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="bg-medium-chromatic-teal text-natural-light py-section-lg">
-      <div class="max-w-7xl mx-auto px-5 md:px-22 lg:px-32">
-        <h2 class="text-subsection font-semibold mb-8">Contact</h2>
-        {
-          page?.contactNote && (
-            <div class="space-y-4 leading-relaxed mb-8">
-              <PortableText value={page.contactNote} />
-            </div>
-          )
-        }
-        <a
-          href="mailto:contact@jitsejager.com"
-          class="inline-block border py-3 px-6 rounded-full border-accent-orange-23 text-natural-light hover:bg-accent-orange-23 transition-colors"
-        >
-          contact@jitsejager.com
-        </a>
+          <!-- Contact -->
+          <div>
+            <h2 class="text-subsection font-semibold mb-8">Contact</h2>
+            {
+              page?.contactNote && (
+                <div class="space-y-4 leading-relaxed mb-8">
+                  <PortableText value={page.contactNote} />
+                </div>
+              )
+            }
+            <a
+              href="mailto:contact@jitsejager.com"
+              class="inline-block border py-3 px-6 rounded-full border-accent-orange-23 text-natural-light hover:bg-accent-orange-23 transition-colors"
+            >
+              contact@jitsejager.com
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   </div>
