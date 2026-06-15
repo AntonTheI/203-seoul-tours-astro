@@ -57,10 +57,10 @@ export function FaqAccordion() {
     >
       {faqs.map((faq, index) => (
         <AccordionItem key={index} value={`item-${index}`} className="px-5">
-          <AccordionTrigger className="text-left font-semibold cursor-pointer ">
+          <AccordionTrigger className="text-left font-semibold cursor-pointer  text-base">
             {faq.question}
           </AccordionTrigger>
-          <AccordionContent className="text-black/70">
+          <AccordionContent className="text-black/70  text-base">
             {faq.answer}
           </AccordionContent>
         </AccordionItem>
