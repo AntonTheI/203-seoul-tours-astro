@@ -65,12 +65,12 @@ const Testimonials = () => {
             <CarouselContent>
               {reviews.map((review, i) => (
                 <CarouselItem key={i}>
-                  <div className="bg-white rounded-2xl px-8 py-10 flex flex-col gap-6 justify-center items-center">
+                  <div className="bg-white rounded-2xl px-10 py-10 flex flex-col gap-6 justify-center items-center">
                     <Quote size={28} className="text-accent-orange-23" />
                     <p className="text-center leading-relaxed">
                       {review.review}
                     </p>
-                    <div>
+                    <div className="text-center">
                       <p className="font-semibold">{review.name}</p>
                       <p className="text-sm text-black/50">{review.country}</p>
                     </div>
