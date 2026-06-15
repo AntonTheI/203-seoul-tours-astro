@@ -1,0 +1,83 @@
+import {defineType, defineField} from 'sanity'
+
+export const aboutPage = defineType({
+  name: 'aboutPage',
+  title: 'About Page',
+  type: 'document',
+  groups: [
+    {name: 'intro', title: 'Intro'},
+    {name: 'seoul', title: 'Seoul story'},
+    {name: 'main', title: 'Main text'},
+    {name: 'workshop', title: 'Workshops'},
+    {name: 'closing', title: 'Closing'},
+  ],
+  fields: [
+    defineField({
+      name: 'introText',
+      title: 'Intro text',
+      type: 'array',
+      of: [{type: 'block'}],
+      group: 'intro',
+    }),
+    defineField({
+      name: 'heroImage',
+      title: 'Portrait photo',
+      type: 'image',
+      group: 'intro',
+      options: {hotspot: true},
+      fields: [defineField({name: 'alt', title: 'Alt text', type: 'string'})],
+    }),
+    defineField({
+      name: 'seoulText',
+      title: 'Seoul story text',
+      type: 'array',
+      of: [{type: 'block'}],
+      group: 'seoul',
+    }),
+    defineField({
+      name: 'seoulImage',
+      title: 'Seoul / walking photo',
+      type: 'image',
+      group: 'seoul',
+      options: {hotspot: true},
+      fields: [defineField({name: 'alt', title: 'Alt text', type: 'string'})],
+    }),
+    defineField({
+      name: 'mainText',
+      title: 'Main text (203 brand, philosophy, background)',
+      type: 'array',
+      of: [{type: 'block'}],
+      group: 'main',
+    }),
+    defineField({
+      name: 'mainImage',
+      title: 'Main section photo',
+      type: 'image',
+      group: 'main',
+      options: {hotspot: true},
+      fields: [defineField({name: 'alt', title: 'Alt text', type: 'string'})],
+    }),
+    defineField({
+      name: 'workshopText',
+      title: 'Workshop text',
+      type: 'array',
+      of: [{type: 'block'}],
+      group: 'workshop',
+    }),
+    defineField({
+      name: 'workshopImage',
+      title: 'Workshop photo',
+      type: 'image',
+      group: 'workshop',
+      options: {hotspot: true},
+      fields: [defineField({name: 'alt', title: 'Alt text', type: 'string'})],
+    }),
+    defineField({
+      name: 'closingText',
+      title: 'Closing text',
+      type: 'array',
+      of: [{type: 'block'}],
+      group: 'closing',
+    }),
+  ],
+})

@@ -53,14 +53,14 @@ const Testimonials = () => {
   return (
     <div className="bg-natural-light">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-section-sm lg:gap-col-gap py-section-lg px-5 md:px-22 lg:px-32">
-        <div className=" w-full flex flex-col gap-4 lg:flex-1 justify-end lg:self-start max-lg:text-center">
+        <div className="reveal w-full flex flex-col gap-4 lg:flex-1 justify-end lg:self-start max-lg:text-center">
           <p className="accent-label">REVIEWS</p>
           <h2 className="text-section font-semibold leading-none">
             Don't just take my word for it
           </h2>
         </div>
 
-        <div className=" w-full flex flex-col gap-4 min-w-0 lg:flex-1 items-center">
+        <div className="reveal w-full flex flex-col gap-4 min-w-0 lg:flex-1 items-center">
           <Carousel setApi={setApi} opts={{ loop: true }} className="w-full">
             <CarouselContent>
               {reviews.map((review, i) => (

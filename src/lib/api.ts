@@ -44,6 +44,27 @@ export async function getOtherTours(currentSlug: string): Promise<Tour[]> {
   return tours.filter((tour) => tour.slug.current !== currentSlug);
 }
 
+export async function getAboutPage() {
+  const page = await client.fetch(`*[_type == "aboutPage"][0]`);
+  if (!page) return null;
+
+  return {
+    ...page,
+    heroImage: page.heroImage
+      ? {url: urlFor(page.heroImage, 800), alt: page.heroImage?.alt}
+      : null,
+    seoulImage: page.seoulImage
+      ? {url: urlFor(page.seoulImage, 1200), alt: page.seoulImage?.alt}
+      : null,
+    mainImage: page.mainImage
+      ? {url: urlFor(page.mainImage, 1200), alt: page.mainImage?.alt}
+      : null,
+    workshopImage: page.workshopImage
+      ? {url: urlFor(page.workshopImage, 1200), alt: page.workshopImage?.alt}
+      : null,
+  };
+}
+
 export async function getKlmPage() {
   const page = await client.fetch(`*[_type == "klmPage"][0]`);
   if (!page) return null;

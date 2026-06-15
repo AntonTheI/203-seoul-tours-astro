@@ -96,6 +96,10 @@
 .headline {
   @apply text-2xl font-bold lg:text-4xl;
 }
+
+.pt-content a {
+  @apply underline text-accent-orange-23 hover:text-medium-chromatic-teal transition-colors;
+}
 /* The e6 at the end is 90% in hex (230 out of 255).
 
 Common opacity values in hex:
