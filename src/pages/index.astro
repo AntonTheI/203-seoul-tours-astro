@@ -18,7 +18,7 @@ const tours = await getAllTours();
   <Hero />
   <AboutTours />
   <Introduction />
-  <TourCard tours={tours} />
+  <TourCard tours={tours} client:visible />
   <TailoredWalks />
   <TravelAssistant />
   <Testimonials client:load />
