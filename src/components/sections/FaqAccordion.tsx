@@ -56,12 +56,8 @@ export function FaqAccordion() {
       className="flex flex-col rounded-md overflow-hidden"
     >
       {faqs.map((faq, index) => (
-        <AccordionItem
-          key={index}
-          value={`item-${index}`}
-          className="bg-white px-5"
-        >
-          <AccordionTrigger className="text-left font-semibold">
+        <AccordionItem key={index} value={`item-${index}`} className="px-5">
+          <AccordionTrigger className="text-left font-semibold cursor-pointer ">
             {faq.question}
           </AccordionTrigger>
           <AccordionContent className="text-black/70">
