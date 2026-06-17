@@ -25,16 +25,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../ui/dialog";
-import type { Tour } from "@/types/tour";
 
 import { useState, useEffect } from "react";
 
 const API_REQUEST = "/api/booking";
-
-interface TourOption {
-  value: string;
-  label: string;
-}
 
 const formSchema = z.object({
   name: z.string().optional(),
@@ -46,21 +40,17 @@ const formSchema = z.object({
       to: z.date().optional(),
     })
     .optional(),
-  extensions: z.array(z.string()).optional(),
   comment: z.string().optional(),
 });
 
 export function TourBookingForm({
   tourSlug,
   className,
-  otherTours = [],
 }: {
   tourSlug: string;
   className?: string;
-  otherTours?: Tour[];
 }) {
   const [open, setOpen] = useState(false);
-  const [selectValue, setSelectValue] = useState("");
 
   const [isMobile, setIsMobile] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -72,11 +62,6 @@ export function TourBookingForm({
 
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const tourExtensions: TourOption[] = otherTours.map((tour) => ({
-    value: tour.slug.current,
-    label: tour.title,
-  }));
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -84,7 +69,6 @@ export function TourBookingForm({
       email: "",
       groupSize: "",
       date: undefined,
-      extensions: [],
       comment: "",
     },
   });
@@ -347,70 +331,6 @@ export function TourBookingForm({
               />
             </div>
 
-            {/* Extend your tour */}
-            <Controller
-              name="extensions"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel>Extend your tour</FieldLabel>
-                  <Select
-                    value={selectValue}
-                    onValueChange={(value) => {
-                      setSelectValue("");
-                      if (!field.value?.includes(value)) {
-                        field.onChange([...(field.value || []), value]);
-                      }
-                    }}
-                  >
-                    <SelectTrigger aria-invalid={fieldState.invalid}>
-                      <SelectValue placeholder="Add an extension" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {tourExtensions.map((opt) => (
-                        <SelectItem key={opt.value} value={opt.value}>
-                          {opt.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FieldDescription>
-                    Add more tours to your day.
-                  </FieldDescription>
-
-                  {/* Selected tags */}
-                  {field.value && field.value.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {field.value.map((val) => {
-                        const label = tourExtensions.find(
-                          (o) => o.value === val,
-                        )?.label;
-                        return (
-                          <span
-                            key={val}
-                            className="flex items-center gap-1 bg-muted px-2 py-1 rounded-md text-sm"
-                          >
-                            {label}
-                            <XIcon
-                              className="h-3 w-3 cursor-pointer text-accent-orange-23"
-                              onClick={() =>
-                                field.onChange(
-                                  field.value?.filter((v) => v !== val),
-                                )
-                              }
-                            />
-                          </span>
-                        );
-                      })}
-                    </div>
-                  )}
-
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
           </div>
 
           {/* Comments */}

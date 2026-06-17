@@ -1,9 +1,11 @@
-const mediaLinks = [
-  { logoName: "instagram", logo: "/assets/instagram.svg" },
-  { logoName: "spotify", logo: "/assets/spotify.svg" },
-  { logoName: "linkedin", logo: "/assets/linkedin.svg" },
-  { logoName: "facebook", logo: "/assets/facebook.svg" },
-  { logoName: "linktree", logo: "/assets/linktree.svg" },
+import { SiInstagram, SiSubstack, SiLinktree } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa6";
+
+const socialLinks = [
+  { icon: SiInstagram, label: "Instagram", href: "#" },
+  { icon: SiSubstack, label: "Substack", href: "#" },
+  { icon: FaLinkedin, label: "LinkedIn", href: "#" },
+  { icon: SiLinktree, label: "Linktree", href: "#" },
 ];
 
 const FooterBrand = () => {
@@ -19,17 +21,17 @@ const FooterBrand = () => {
           Seoul · Curiosity · Walking tours · Stories
         </p>
         <div className="flex justify-center gap-4 my-6">
-          {mediaLinks.map((link, index) => (
-            <div
-              key={index}
-              className="flex rounded-full border p-2 lg:min-w-13.5 "
+          {socialLinks.map(({ icon: Icon, label, href }) => (
+            <a
+              key={label}
+              href={href}
+              aria-label={label}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center rounded-full border w-10 h-10 lg:w-13.5 lg:h-13.5 border-medium-atmospheric-teal text-medium-atmospheric-teal hover:text-accent-orange-23 hover:border-accent-orange-23 transition-colors duration-200"
             >
-              <img
-                src={link.logo}
-                alt={link.logoName}
-                className="flex justify-center items-center h-6.25 w-6.25 lg:h-9 lg:w-9 hover:text-accent-orange-23"
-              />
-            </div>
+              <Icon className="w-5 h-5 lg:w-7 lg:h-7" />
+            </a>
           ))}
         </div>
       </div>
