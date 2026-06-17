@@ -76,8 +76,6 @@ export function TourBookingForm({
   function onSubmit(data: z.infer<typeof formSchema>) {
     setFormData(data);
     setIsDialogOpen(true);
-    // Do something with the form values.
-    console.log(data);
   }
 
   async function sendBooking() {
@@ -269,9 +267,7 @@ export function TourBookingForm({
                                 setOpen(false);
                               }
                             }}
-                            // captionLayout="dropdown"
-                            // startMonth={new Date()}
-                            // endMonth={new Date(new Date().getFullYear() + 10, 11)}
+                            disabled={{ before: new Date() }}
                             autoFocus
                           />
                         </DrawerContent>
@@ -312,6 +308,7 @@ export function TourBookingForm({
                                 setOpen(false);
                               }
                             }}
+                            disabled={{ before: new Date() }}
                             captionLayout="dropdown"
                             startMonth={new Date()}
                             endMonth={
