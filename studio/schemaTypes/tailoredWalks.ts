@@ -30,12 +30,6 @@ export const tailoredWalks = defineType({
       group: 'body',
     }),
     defineField({
-      name: 'closingLine',
-      title: 'Closing line (italic)',
-      type: 'string',
-      group: 'body',
-    }),
-    defineField({
       name: 'ctaTagline',
       title: 'CTA tagline',
       type: 'string',
