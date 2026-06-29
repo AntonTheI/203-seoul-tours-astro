@@ -51,18 +51,24 @@ export async function getAboutPage() {
   return {
     ...page,
     heroImage: page.heroImage
-      ? {url: urlFor(page.heroImage, 800), alt: page.heroImage?.alt}
+      ? { url: urlFor(page.heroImage, 800), alt: page.heroImage?.alt }
       : null,
     seoulImage: page.seoulImage
-      ? {url: urlFor(page.seoulImage, 1200), alt: page.seoulImage?.alt}
+      ? { url: urlFor(page.seoulImage, 1200), alt: page.seoulImage?.alt }
       : null,
     mainImage: page.mainImage
-      ? {url: urlFor(page.mainImage, 1200), alt: page.mainImage?.alt}
+      ? { url: urlFor(page.mainImage, 1200), alt: page.mainImage?.alt }
       : null,
     workshopImage: page.workshopImage
-      ? {url: urlFor(page.workshopImage, 1200), alt: page.workshopImage?.alt}
+      ? { url: urlFor(page.workshopImage, 1200), alt: page.workshopImage?.alt }
       : null,
   };
+}
+
+export async function getTailoredWalks() {
+  const page = await client.fetch(`*[_type == "tailoredWalks"][0]`);
+  if (!page) return null;
+  return page;
 }
 
 export async function getKlmPage() {
@@ -72,7 +78,7 @@ export async function getKlmPage() {
   return {
     ...page,
     magazinePhoto: page.magazinePhoto
-      ? {url: urlFor(page.magazinePhoto, 1200), alt: page.magazinePhoto?.alt}
+      ? { url: urlFor(page.magazinePhoto, 1200), alt: page.magazinePhoto?.alt }
       : null,
     groupPhotos: (page.groupPhotos ?? []).map((photo: any) => ({
       url: urlFor(photo, 1200),

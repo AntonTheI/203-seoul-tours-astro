@@ -1,82 +1,49 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getTailoredWalks } from "@/lib/api";
+import { PortableText } from "astro-portabletext";
+
+let page = null;
+try {
+  page = await getTailoredWalks();
+} catch (e) {
+  // Sanity unavailable — renders fallback content
+}
 ---
 
 <BaseLayout title="Tailor-made Tours — Seoul Walking Tours">
   <div class="bg-natural-light">
     <!-- Hero -->
-    <section class="bg-medium-chromatic-teal pt-section-lg pb-section">
+    <section class="bg-medium-chromatic-teal py-section-lg">
       <div class="max-w-7xl mx-auto px-5 md:px-22 lg:px-32">
         <div class="reveal">
-          <!-- <p class="accent-label text-light-atmospheric-teal-70 mb-4">
+          <p class="accent-label text-light-atmospheric-teal-70 mb-4">
             TAILOR-MADE TOURS
-          </p> -->
+          </p>
           <h1
             class="text-section font-semibold text-natural-light leading-tight mb-4"
           >
-            Tailor-made Tours
+            {page?.heroTitle ?? "Tailor-made Tours"}
           </h1>
           <p class="text-xl italic text-light-atmospheric-teal-70">
-            Seoul, made to measure.
+            {page?.heroSubtitle ?? "Seoul, made to measure."}
           </p>
         </div>
       </div>
     </section>
 
     <!-- Body text -->
-    <section class="py-section">
+    <section class="py-section-lg">
       <div class="max-w-7xl mx-auto px-5 md:px-22 lg:px-32">
-        <div
-          class="max-w-3xl space-y-6 leading-relaxed text-natural-dark-210 reveal"
-        >
-          <p>
-            Seoul is generous with its highlights — the palaces, the markets,
-            the parks, the neighbourhoods each with a character entirely their
-            own. Most visitors arrive with a list of things to do and places to
-            visit, and the list is a good one. But somewhere underneath it,
-            lingers a question that is harder to answer: what else is there?
-            What does this city look like if I turn away from where everyone
-            else is looking?
-          </p>
-          <p>
-            That's where I come in. With extensive knowledge of the city and its
-            different areas, I can help you find what you're looking for — even
-            before you know exactly what it is. Tell me when you're here, how
-            long you have, and what interests you. I'll take it from there and
-            come back with a few ideas.
-          </p>
-          <p>
-            Seoul is a city still catching its breath — five hundred years of
-            dynasty, a brutal colonial period, a war that split the peninsula,
-            and then a sprint from poverty to prosperity the world is still
-            trying to understand. Markets that feed half the city, mountains
-            that rise straight from the city centre, neighbourhoods shaped by
-            poets, factory workers, and artists. A morning at a Buddhist temple
-            tucked away behind a lively street. An evening among local youth in
-            a park along the Han river. A hole-in-the-wall lunch in a place no
-            guidebook has found yet.
-          </p>
-          <p>
-            Beyond the better-known landmarks, the themes I know well include
-            Korean contemporary history, everyday neighbourhood life, Korean
-            film and literature, market and food culture. But the tour doesn't
-            have to start with a theme — tell me when you're here and how long
-            you have, and I'll put something together. If something falls
-            outside what I know well, I'll say so.
-          </p>
-          <p>
-            My tours are walking conversations. No flag, no microphone. We
-            explore together, at a pace that allows for detours. Pricing depends
-            on duration and group size — get in touch and we'll work out the
-            details.
-          </p>
-          <p class="italic text-black/50">
-            Tell me when you're arriving and what you're hoping for. A few lines
-            are enough.
-          </p>
-        </div>
+        <div class="max-w-3xl reveal">
+          <div
+            class="space-y-6 leading-relaxed text-natural-dark-210 pt-content"
+          >
+            <PortableText value={page.bodyText} />
+          </div>
 
-        <!-- Duration row -->
+          <p class="italic text-black/50 mt-6">page?.closingLine ??</p>
+        </div>
       </div>
     </section>
 
@@ -89,8 +56,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               Get in touch
             </h2>
             <p class="text-light-atmospheric-teal-70 leading-relaxed">
-              A few lines about when you're arriving and what interests you is
-              all I need.
+              {
+                page?.ctaTagline ??
+                  "A few lines about when you're arriving and what interests you is all I need."
+              }
             </p>
           </div>
           <div class="shrink-0">
