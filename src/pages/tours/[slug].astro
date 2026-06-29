@@ -112,7 +112,7 @@ const otherTours = await getOtherTours(tour.slug.current);
       </div>
       <PersonalNote note={tour.personalNote} class="md:rounded-2xl lg:hidden" />
 
-      <div class="lg:self-start flex-1 sticky top-17">
+      <div class="lg:self-start flex-1 sticky top-17 lg:max-h-[calc(100vh-68px)] lg:overflow-y-auto no-scrollbar">
         <PracticalInfo
           className="md:rounded-2xl hidden lg:block bg-white mb-8 px-5 py-10"
           info={tour.practicalInfo}
