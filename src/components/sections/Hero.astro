@@ -1,0 +1,41 @@
+---
+
+---
+
+<section
+  class="relative flex items-center justify-center min-h-dvh"
+  style="background-image: url('/assets/images/landingPageHeader.jpg'); background-size: cover; background-position: center;"
+>
+  <!-- Dark overlay for text readability -->
+  <div class="absolute inset-0"></div>
+
+  <!--
+    Fade: pinned to the bottom of the hero (bottom-0), going from transparent
+    at the top to the teal of the next section at the bottom, so the photo
+    blends into the section below instead of ending in a hard line.
+    "-t" in bg-linear-to-t means the gradient runs bottom -> top, so
+    "from-" is the bottom colour and "to-" is the top colour.
+  -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-x-0 bottom-0"
+  >
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
+    <h1 class="flex text-hero font-bold leading-none text-white flex-col gap-2">
+      <span>Seoul.</span>
+      <span>Beyond the obvious.</span>
+    </h1>
+    <!-- <p class="text-lg text-white/90 mt-4">
+      Unhurried, thoughtful walking tours People, places, and the rhythms of
+      daily life.
+    </p> -->
+    <!-- Button can be uncommented when ready -->
+    <!-- <button
+      class="mt-8 text-lg bg-accent-orange-23 rounded-full px-8 py-3.5 font-semibold text-natural-light"
+    >
+      Book a Walk
+    </button> -->
+  </div>
+</section>
