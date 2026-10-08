@@ -24,7 +24,7 @@ pnpm-debug.log*
 .idea/
 
 # images
-public/assets/images
+# public/assets/images
 
 # Claude 
 CLAUDE.md
