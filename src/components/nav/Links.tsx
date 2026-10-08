@@ -68,12 +68,15 @@ const Links = ({
                       {item.tailoredMade?.label}
                     </a>
                   </li>
+                  <div className="p-3">
+                    <hr />
+                  </div>
                   <li>
                     <a
                       href="/about/#seoulphotoworkshops"
                       className="text-medium-chromatic-teal hover:text-accent-orange-23"
                     >
-                      Seoul Photography Workshops
+                      Photography Workshops
                     </a>
                   </li>
                 </ul>
