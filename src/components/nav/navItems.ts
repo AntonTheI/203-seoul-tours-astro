@@ -19,6 +19,6 @@ export function getNavItems(tours: Tour[]) {
     },
     { href: "/about", label: "About" },
     { href: "/faq", label: "FAQ" },
-    // { href: "/concierge", label: "Concierge" },
+    { href: "/about/#seoulphotoworkshops", label: "Photography Workshops" },
   ];
 }
