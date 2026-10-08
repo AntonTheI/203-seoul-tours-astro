@@ -4,11 +4,16 @@ const SocialMediaGrid = () => {
       <div className="flex flex-col max-w-7xl mx-auto px-5 py-section-lg md:px-22 lg:px-32 gap-4 ">
         <div className="reveal">
           <h4 className="accent-label">#SOCIAL MEDIA</h4>
-          <h2 className="text-section font-semibold">Recent posts</h2>
+          <h2 className="text-section font-semibold">Seoul, as I see it.</h2>
           <div className="flex gap-1.5">
             <img src="/assets/instagram.svg" alt="instagram icon" />
-            <p>Follow</p>
-            <p className="text-accent-orange-23">@jitsejager</p>
+            <p>Follow me</p>
+            <a
+              className="text-accent-orange-23"
+              href="https://www.instagram.com/jitsejager/"
+            >
+              @jitsejage
+            </a>
           </div>
         </div>
 

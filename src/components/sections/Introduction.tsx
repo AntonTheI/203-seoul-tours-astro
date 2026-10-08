@@ -11,11 +11,11 @@ const Introduction = () => {
               Walk with me for a bit
             </h2>
             <p>
-              Seoul can feel overwhelming once you step off familiar paths.
+              Seoul beyond its highlights is not a city that opens up easily.
               <br />
-              I'm Jitse, a Dutch guide living in Seoul with my Korean wife. I've
-              come to know the city by walking it, by watching it, and by living
-              it.
+              I'm Jitse — a Dutch guide living in Seoul with my Korean wife.
+              I've come to understand Seoul by walking it, watching it, and
+              living it.
             </p>
             <a href="/about/">
               <p className="text-medium-chromatic-teal hover:text-accent-orange-23">
@@ -23,12 +23,14 @@ const Introduction = () => {
               </p>
             </a>
           </div>
-          <div className="reveal w-52 h-52 shrink-0">
-            <img
-              className="w-full h-full rounded-full object-cover"
-              src="/assets/images/jitseProfilePic.jpg"
-              alt="picture of Jitse"
-            />
+          <div className="flex-1 reveal h-96">
+            <div className="h-full overflow-hidden rounded-sm">
+              <img
+                className="w-full h-full object-cover"
+                src="/assets/images/PortraitStreet.jpg"
+                alt="picture of Jitse"
+              />
+            </div>
           </div>
         </div>
       </div>
